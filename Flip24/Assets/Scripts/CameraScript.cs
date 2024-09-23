@@ -6,7 +6,9 @@ public class CameraScript : MonoBehaviour
 {
     public Camera mainCamera;
     Vector2 cameraOffset = new Vector2(0.4f, 0.2f);
-    Rigidbody2D rb; 
+    Rigidbody2D rb;
+
+    public float smoothSpeed = 0.125f; 
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +19,24 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mainCamera.transform.position = Vector2.Lerp(mainCamera.transform.position, transform.position, 0.8f) * Time.deltaTime;
-        rb.AddForce(new Vector2(2,2), ForceMode2D.Impulse);
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            rb.AddForce(new Vector2(10, 10), ForceMode2D.Impulse);
+        }
 
     }
+
+    private void FixedUpdate()
+    {
+       Vector2 smoothFollow = Vector2.Lerp(mainCamera.transform.position, transform.position, smoothSpeed);
+       mainCamera.transform.position = smoothFollow;
+       
+        
+    }
 }
+
+
+
+
+
+
