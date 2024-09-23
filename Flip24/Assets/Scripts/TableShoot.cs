@@ -12,13 +12,19 @@ public class TableShoot : MonoBehaviour
     public Vector3 throwDirection;
     [SerializeField] Rigidbody2D rb;
     public int spaceButtonPressed;
+    
 
+
+    private void Start()
+    {
+        
+    }
     void Update()
     {
         //if sats för att skjuta iväg spelaren beroende på spelarens input
         if (Input.GetKeyDown(KeyCode.Space) && spaceButtonPressed == 2)
         {
-
+            
             rb.AddForce(throwDirection.normalized * throwStrength, ForceMode2D.Impulse);
             rb.AddTorque(-torque, ForceMode2D.Force);
             spaceButtonPressed = 0;

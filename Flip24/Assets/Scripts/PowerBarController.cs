@@ -10,6 +10,7 @@ public class PowerBarController : MonoBehaviour
     public float setPower;
     TableShoot shootScript;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,7 @@ public class PowerBarController : MonoBehaviour
             shootScript.throwStrength = setPower;
             powerBarSpeed = 0;
             shootScript.spaceButtonPressed = 1;
+
         }
 
     }
