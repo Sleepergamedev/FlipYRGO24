@@ -12,6 +12,12 @@ public class AngleScript : MonoBehaviour
     [SerializeField] GameObject endOfLine;
     Vector3 currentEulerAngles;
     public Vector3 direction;
+    TableShoot table;
+
+    void Start()
+    {
+        table = FindFirstObjectByType<TableShoot>();
+    }
     void Update()
     {
         currentEulerAngles += new Vector3(0, 0, 1) * Time.deltaTime * lineSpeed;
@@ -23,6 +29,10 @@ public class AngleScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             direction = new Vector3(endOfLine.transform.position.x, endOfLine.transform.position.y) - new Vector3(startPos.transform.position.x, startPos.transform.position.y);
+            Debug.Log(direction);
+            table.throwDirection = direction;
+            Debug.Log(table.throwDirection);
+
         }
 
 
