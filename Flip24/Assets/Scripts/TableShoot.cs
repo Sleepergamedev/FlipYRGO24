@@ -6,17 +6,28 @@ using UnityEngine;
 public class TableShoot : MonoBehaviour
 {
 
-    [SerializeField] float throwStrength;
+    public float throwStrength;
+    public float torque;
     public Vector3 throwDirection;
     [SerializeField] Rigidbody2D rb;
+    public int spaceButtonPressed;
+
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Space) && spaceButtonPressed == 2)
         {
+            
             rb.AddForce(throwDirection.normalized * throwStrength, ForceMode2D.Impulse);
-            Debug.Log("Shoot table");
+            rb.AddTorque(-torque, ForceMode2D.Force);
+            spaceButtonPressed = 0;
         }
     }
+
+    //public int SpaceButtonCounter(int numbersPressed)
+    //{
+    //    spaceButtonPressed = numbersPressed; 
+    //    return spaceButtonPressed;
+    //}
 
 }
