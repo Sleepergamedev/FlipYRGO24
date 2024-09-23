@@ -7,32 +7,44 @@ using UnityEngine.UIElements;
 
 public class AngleScript : MonoBehaviour
 {
+    //variabler
     [SerializeField] float lineSpeed;
     [SerializeField] GameObject startPos;
     [SerializeField] GameObject endOfLine;
     Vector3 currentEulerAngles;
     public Vector3 direction;
     TableShoot shootScript;
+    private bool checkActive = true;
 
     void Start()
     {
+        //hämta instansen av skriptet
         shootScript = FindFirstObjectByType<TableShoot>();
     }
     void Update()
     {
-        currentEulerAngles += new Vector3(0, 0, 1) * Time.deltaTime * lineSpeed;
-        transform.eulerAngles = currentEulerAngles;
+        if (checkActive == true)
+        {
+            currentEulerAngles += new Vector3(0, 0, 1) * Time.deltaTime * lineSpeed;
+            transform.eulerAngles = currentEulerAngles;
+        }
+        //sätt att z axeln roterar med hjälp av euler angles
+
+
+        //invertera håll ifall rotationen går över max värden
         if (transform.eulerAngles.z >= 90)
         {
             lineSpeed = -lineSpeed;
         }
+
+        //if sats för att hämta vinkeln med hjälp av vektorer och empty game objekts i scenen
         if (Input.GetKeyDown(KeyCode.Space) && shootScript.spaceButtonPressed == 1)
         {
-            shootScript.spaceButtonPressed = 2;
             Debug.Log("Space");
             direction = new Vector3(endOfLine.transform.position.x, endOfLine.transform.position.y) - new Vector3(startPos.transform.position.x, startPos.transform.position.y);
             shootScript.throwDirection = direction;
-            transform.eulerAngles = transform.eulerAngles;
+            checkActive = false;
+            shootScript.spaceButtonPressed = 2;
         }
 
 
