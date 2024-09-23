@@ -10,12 +10,14 @@ public class TableShoot : MonoBehaviour
     public float torque;
     public Vector3 throwDirection;
     [SerializeField] Rigidbody2D rb;
-    int test = 5;
+    
+
+    public int spaceButtonPressed;
 
     void FixedUpdate()
     {
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && spaceButtonPressed == 2)
         {
             rb.AddForce(throwDirection.normalized * throwStrength, ForceMode2D.Impulse);
             rb.AddTorque(torque, ForceMode2D.Force);

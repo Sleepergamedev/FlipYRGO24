@@ -25,7 +25,7 @@ public class PowerBarController : MonoBehaviour
             powerBarSpeed = -powerBarSpeed;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && shootScript.spaceButtonPressed == 0)
         {
             setPower = powerBar.value / 3;
             Debug.Log(setPower);
