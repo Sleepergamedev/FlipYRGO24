@@ -7,13 +7,15 @@ public class TableShoot : MonoBehaviour
 {
 
     [SerializeField] float throwStrength;
-    public Vector2 throwDirection;
+    public Vector3 throwDirection;
     [SerializeField] Rigidbody2D rb;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if (Input.GetKeyDown(KeyCode.F))
         {
             rb.AddForce(throwDirection.normalized * throwStrength, ForceMode2D.Impulse);
+            Debug.Log("Shoot table");
         }
     }
 
