@@ -15,11 +15,9 @@ public class TableShoot : MonoBehaviour
     void FixedUpdate()
     {
 
-        if (Input.GetKeyDown(KeyCode.S))
-
-        
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            // rb.AddForce(throwDirection.normalized * throwStrength, ForceMode2D.Impulse);
+            rb.AddForce(throwDirection.normalized * throwStrength, ForceMode2D.Impulse);
             rb.AddTorque(torque, ForceMode2D.Force);
         }
     }
