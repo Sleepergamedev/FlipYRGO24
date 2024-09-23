@@ -12,7 +12,7 @@ public class TableShoot : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     public int spaceButtonPressed;
 
-    void FixedUpdate()
+    void Update()
     {
 
         if (Input.GetKeyDown(KeyCode.Space) && spaceButtonPressed == 2)
