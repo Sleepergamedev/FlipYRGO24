@@ -28,7 +28,7 @@ public class AngleScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && shootScript.spaceButtonPressed == 1)
         {
-            shootScript.spaceButtonPressed++;
+            shootScript.spaceButtonPressed = 2;
             Debug.Log("Space");
             direction = new Vector3(endOfLine.transform.position.x, endOfLine.transform.position.y) - new Vector3(startPos.transform.position.x, startPos.transform.position.y);
             shootScript.throwDirection = direction;
