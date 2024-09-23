@@ -10,16 +10,25 @@ public class TableShoot : MonoBehaviour
     public float torque;
     public Vector3 throwDirection;
     [SerializeField] Rigidbody2D rb;
-    int test = 5;
+    public int spaceButtonPressed;
+
 
     void FixedUpdate()
     {
 
-        if (Input.GetKeyDown(KeyCode.F) && spaceButtonPressed == 2)
+        if (Input.GetKeyDown(KeyCode.Space) && spaceButtonPressed == 2)
         {
+            
             rb.AddForce(throwDirection.normalized * throwStrength, ForceMode2D.Impulse);
             rb.AddTorque(-torque, ForceMode2D.Force);
+            spaceButtonPressed = 0;
         }
     }
+
+    //public int SpaceButtonCounter(int numbersPressed)
+    //{
+    //    spaceButtonPressed = numbersPressed; 
+    //    return spaceButtonPressed;
+    //}
 
 }

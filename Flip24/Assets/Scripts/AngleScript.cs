@@ -26,10 +26,13 @@ public class AngleScript : MonoBehaviour
         {
             lineSpeed = -lineSpeed;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && shootScript.spaceButtonPressed == 1)
         {
+            shootScript.spaceButtonPressed++; 
+            Debug.Log("Space"); 
             direction = new Vector3(endOfLine.transform.position.x, endOfLine.transform.position.y) - new Vector3(startPos.transform.position.x, startPos.transform.position.y);
             shootScript.throwDirection = direction;
+            transform.eulerAngles = transform.eulerAngles;
         }
 
 
