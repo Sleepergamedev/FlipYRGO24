@@ -10,8 +10,7 @@ public class TableShoot : MonoBehaviour
     public float torque;
     public Vector3 throwDirection;
     [SerializeField] Rigidbody2D rb;
-    public int spaceButtonPressed;
-
+    int test = 5;
 
     void FixedUpdate()
     {
