@@ -36,7 +36,14 @@ public class AngleScript : MonoBehaviour
         {
             lineSpeed = -lineSpeed;
         }
-
+        if (transform.eulerAngles.z > 91)
+        {
+            currentEulerAngles.z = 90;
+        }
+        if (transform.eulerAngles.z > 359)
+        {
+            currentEulerAngles.z = 0;
+        }
         //if sats för att hämta vinkeln med hjälp av vektorer och empty game objekts i scenen
         if (Input.GetKeyDown(KeyCode.Space) && shootScript.spaceButtonPressed == 1)
         {
