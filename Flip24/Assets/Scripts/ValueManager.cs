@@ -33,11 +33,5 @@ public class ValueManager : MonoBehaviour
         {
             isFlipped270 = true;
         }
-        else
-        {
-
-        }
-
-
     }
 }

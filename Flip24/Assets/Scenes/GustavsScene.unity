@@ -745,8 +745,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe50b4317296551449467310c450a040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 121446523}
   smoothSpeed: 0.125
+  mainCamera: {fileID: 121446523}
+  launchReady: 0
+  zoomFactor: 1.5
+  shakeDuration: 2
+  shakeIntensity: 0.1
 --- !u!114 &792328209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -762,6 +766,7 @@ MonoBehaviour:
   metresFlown: 0
   isFlipped180: 0
   isFlipped90: 0
+  isFlipped270: 0
   rb: {fileID: 792328205}
 --- !u!1 &926770141
 GameObject:
@@ -1077,6 +1082,7 @@ GameObject:
   - component: {fileID: 2136836785}
   - component: {fileID: 2136836784}
   - component: {fileID: 2136836787}
+  - component: {fileID: 2136836788}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1188,6 +1194,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2136836788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136836782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c00e799e901bd4a887cdb75398ee15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finalScore: 0
 --- !u!1001 &4561287979349884175
 PrefabInstance:
   m_ObjectHideFlags: 0
