@@ -10,7 +10,7 @@ public class CameraScript : MonoBehaviour
     private Vector3 originalPosition;
     private float originalSize;
     Vector3 cameraOffset = new Vector3(0, 0, -10);
-    public bool launchReady; 
+    public bool launchReady;
 
     [Header("Camera Zoom Specs")]
     public float zoomFactor = 1.5f;
@@ -19,7 +19,7 @@ public class CameraScript : MonoBehaviour
     bool isShaking = false;
 
     //private 
-    TableShoot shootScript; 
+    TableShoot shootScript;
 
     // Start is called before the first frame update
     void Start()
@@ -49,9 +49,9 @@ public class CameraScript : MonoBehaviour
         {
             Vector2 smoothFollow = Vector2.Lerp(mainCamera.transform.position, transform.position, smoothSpeed);
             mainCamera.transform.position = smoothFollow;
-            
+
         }
-        
+
     }
 
     void TriggerZoomAndShake()
@@ -84,7 +84,7 @@ public class CameraScript : MonoBehaviour
 
         while (elapsedTime < 0.4f)
         {
-            launchReady = true; 
+            launchReady = true;
             mainCamera.orthographicSize = Mathf.Lerp(targetSize, originalSize, elapsedTime / 0.5f);
             mainCamera.transform.position = Vector3.Lerp(shakePosition, originalPosition, elapsedTime / 0.5f);
             elapsedTime += Time.deltaTime;
