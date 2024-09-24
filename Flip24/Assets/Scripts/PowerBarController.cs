@@ -11,7 +11,7 @@ public class PowerBarController : MonoBehaviour
     public float powerBarSpeed = 1;
     public float setPower;
     TableShoot shootScript;
-    
+
     private float initialFillWidth;
 
 
