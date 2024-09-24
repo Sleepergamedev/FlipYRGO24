@@ -49,7 +49,6 @@ public class CameraScript : MonoBehaviour
         {
             Vector2 smoothFollow = Vector2.Lerp(mainCamera.transform.position, transform.position, smoothSpeed);
             mainCamera.transform.position = smoothFollow;
-
         }
 
     }
