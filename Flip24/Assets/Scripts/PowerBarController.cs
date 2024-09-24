@@ -5,16 +5,24 @@ using UnityEngine;
 
 public class PowerBarController : MonoBehaviour
 {
+    public RectTransform fillRect;
     public Slider powerBar;
-    public float powerBarSpeed;
+    public Image fillImage;
+    public float powerBarSpeed = 1;
     public float setPower;
     TableShoot shootScript;
+    
+    private float initialFillWidth;
 
 
     // Start is called before the first frame update
     void Start()
     {
         shootScript = FindFirstObjectByType<TableShoot>();
+        initialFillWidth = fillRect.rect.width;
+        fillImage.type = Image.Type.Filled;
+        fillImage.fillMethod = Image.FillMethod.Horizontal;
+        fillImage.fillOrigin = (int)Image.OriginHorizontal.Left;
     }
 
     // Update is called once per frame
@@ -25,6 +33,9 @@ public class PowerBarController : MonoBehaviour
         {
             powerBarSpeed = -powerBarSpeed;
         }
+
+        float fillAmount = (powerBar.value - powerBar.minValue) / (powerBar.maxValue - powerBar.minValue);
+        fillImage.fillAmount = fillAmount;
 
         if (Input.GetKeyDown(KeyCode.Space) && shootScript.spaceButtonPressed == 0)
         {
@@ -39,3 +50,54 @@ public class PowerBarController : MonoBehaviour
 
     }
 }
+/*
+using UnityEngine;
+using UnityEngine.UI;
+
+public class PowerBarController : MonoBehaviour
+{
+    public Slider powerBar;
+    public RectTransform fillRect;
+    public Image fillImage;
+    public float powerBarSpeed = 1f;
+    public float setPower;
+    TableShoot shootScript;
+
+    private float initialFillWidth;
+
+    void Start()
+    {
+        shootScript = FindFirstObjectByType<TableShoot>();
+        initialFillWidth = fillRect.rect.width;
+        // Ensure the fill image's Image component is set to type "Filled"
+        fillImage.type = Image.Type.Filled;
+        fillImage.fillMethod = Image.FillMethod.Horizontal;
+        fillImage.fillOrigin = (int)Image.OriginHorizontal.Left;
+    }
+
+    void Update()
+    {
+        // Update slider value
+        powerBar.value += powerBarSpeed * 2 * Time.deltaTime;
+        if (powerBar.value >= powerBar.maxValue || powerBar.value <= powerBar.minValue)
+        {
+            powerBarSpeed = -powerBarSpeed;
+        }
+
+        // Update fill amount
+        float fillAmount = (powerBar.value - powerBar.minValue) / (powerBar.maxValue - powerBar.minValue);
+        fillImage.fillAmount = fillAmount;
+
+        // Handle input
+        if (Input.GetKeyDown(KeyCode.Space) && shootScript.spaceButtonPressed == 0)
+        {
+            Debug.Log("space");
+            setPower = powerBar.value / 3;
+            Debug.Log(setPower);
+            shootScript.throwStrength = setPower;
+            powerBarSpeed = 0;
+            shootScript.spaceButtonPressed = 1;
+        }
+    }
+}
+*/
