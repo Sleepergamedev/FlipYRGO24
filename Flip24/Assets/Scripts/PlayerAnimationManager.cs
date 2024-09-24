@@ -16,9 +16,9 @@ public class PlayerAnimationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x == -2.1 && cameraScript.launchReady)
+        if (cameraScript.launchReady)
         {
-            animator.Play("MainCharacterThrow");
+            animator.Play("PlayerThrowAnim");
         }
     }
 }
