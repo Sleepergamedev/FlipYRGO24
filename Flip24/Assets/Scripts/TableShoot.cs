@@ -12,17 +12,19 @@ public class TableShoot : MonoBehaviour
     public Vector3 throwDirection;
     [SerializeField] Rigidbody2D rb;
     public int spaceButtonPressed;
+    CameraScript cameraScript; 
     
 
 
     private void Start()
     {
+        cameraScript = FindFirstObjectByType<CameraScript>();
         
     }
     void Update()
     {
         //if sats för att skjuta iväg spelaren beroende på spelarens input
-        if (Input.GetKeyDown(KeyCode.Space) && spaceButtonPressed == 2)
+        if (spaceButtonPressed == 2 && cameraScript.launchReady)
         {
             
             rb.AddForce(throwDirection.normalized * throwStrength, ForceMode2D.Impulse);
