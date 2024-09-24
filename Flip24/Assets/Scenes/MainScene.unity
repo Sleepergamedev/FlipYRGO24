@@ -442,10 +442,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -643,11 +643,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8229766758048969752, guid: 2882ab13654afca499a481ca4820f75f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 11
+      value: 342
       objectReference: {fileID: 0}
     - target: {fileID: 8229766758048969752, guid: 2882ab13654afca499a481ca4820f75f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -201
+      value: -354
       objectReference: {fileID: 0}
     - target: {fileID: 8229766758048969752, guid: 2882ab13654afca499a481ca4820f75f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
