@@ -360,6 +360,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &225304593 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4544939387153039428, guid: 1b368e9e8aac4ce4bb56f6ad04dfc59e, type: 3}
+  m_PrefabInstance: {fileID: 1125331351}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &389799856
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,6 +855,10 @@ PrefabInstance:
       propertyPath: lineSpeed
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 789968323321454530, guid: 1b368e9e8aac4ce4bb56f6ad04dfc59e, type: 3}
+      propertyPath: powerLineSprite
+      value: 
+      objectReference: {fileID: 225304593}
     - target: {fileID: 2524373396179031557, guid: 1b368e9e8aac4ce4bb56f6ad04dfc59e, type: 3}
       propertyPath: rb
       value: 
