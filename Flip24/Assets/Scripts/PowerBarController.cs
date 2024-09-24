@@ -45,6 +45,7 @@ public class PowerBarController : MonoBehaviour
             shootScript.throwStrength = setPower;
             powerBarSpeed = 0;
             shootScript.spaceButtonPressed = 1;
+            powerBar.gameObject.SetActive(false);
 
         }
 

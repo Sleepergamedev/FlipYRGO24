@@ -11,15 +11,22 @@ public class AngleScript : MonoBehaviour
     [SerializeField] float lineSpeed;
     [SerializeField] GameObject startPos;
     [SerializeField] GameObject endOfLine;
+    public SpriteRenderer powerLineSprite;  
     Vector3 currentEulerAngles;
     public Vector3 direction;
     TableShoot shootScript;
     private bool checkActive = true;
 
+    PowerBarController powerBarController;
+
     void Start()
     {
         //hämta instansen av skriptet
         shootScript = FindFirstObjectByType<TableShoot>();
+        powerBarController = FindFirstObjectByType<PowerBarController>();
+        powerLineSprite.enabled = false;
+        
+        
     }
     void Update()
     {
@@ -44,6 +51,13 @@ public class AngleScript : MonoBehaviour
         {
             currentEulerAngles.z = 0;
         }
+
+        //make arrow visable to the user after power has been declared
+        if (shootScript.spaceButtonPressed > 0)
+        {
+            powerLineSprite.enabled =true;
+        }
+
         //if sats för att hämta vinkeln med hjälp av vektorer och empty game objekts i scenen
         if (Input.GetKeyDown(KeyCode.Space) && shootScript.spaceButtonPressed == 1)
         {
@@ -52,6 +66,7 @@ public class AngleScript : MonoBehaviour
             shootScript.throwDirection = direction;
             checkActive = false;
             shootScript.spaceButtonPressed = 2;
+            
         }
 
 
