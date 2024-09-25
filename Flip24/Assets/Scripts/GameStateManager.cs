@@ -22,7 +22,8 @@ public class GameStateManager : MonoBehaviour
             Debug.Log("game over");
             UIManager.Instance.backShade.gameObject.SetActive(true);
             UIManager.Instance.backShade.gameObject.transform.position = new Vector3(tablePos.transform.position.x, 0, 0);
-
+            UIManager.Instance.judges.gameObject.SetActive(true);
+            UIManager.Instance.judges.gameObject.transform.position = new Vector3(tablePos.transform.position.x, 0, 0);
         }
     }
 

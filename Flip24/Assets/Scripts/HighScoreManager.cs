@@ -15,7 +15,7 @@ public class HighScoreManager : MonoBehaviour
     public int maxHighScores = 5;
     ScoreManager scoreManager;
 
-    bool scoreLogged;
+    public bool hej;   
     int newScore; 
 
     private void Start()
@@ -101,7 +101,7 @@ public class HighScoreManager : MonoBehaviour
 
         // Hide input field
         nameInputField.gameObject.SetActive(false);
-        scoreLogged = true; 
+        
     }
 
     public void DisplayHighScores()
