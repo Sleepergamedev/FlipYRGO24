@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance => _instance;
     public SpriteRenderer backShade;
     public GameObject judges;
+    
 
     private void Awake()
     {
