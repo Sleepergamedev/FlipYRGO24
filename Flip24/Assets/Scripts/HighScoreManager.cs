@@ -1,24 +1,35 @@
+using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
+using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class HighScoreManager : MonoBehaviour
 {
     public TMP_InputField nameInputField;
+    public TMP_Text highScoreText; 
     public int maxHighScores = 5;
     ScoreManager scoreManager;
 
-    bool scoreLogged; 
+    public bool hej;   
+    int newScore; 
 
     private void Start()
     {
         scoreManager = FindFirstObjectByType<ScoreManager>();
+        nameInputField.onEndEdit.AddListener(OnNameInput);
+        
     }
+
+   
 
     public void LogHighScore(int score)
     {
+        Debug.Log(score); 
         int lowestHighScore = int.MaxValue;
         bool hasExistingScores = false;
 
@@ -35,16 +46,22 @@ public class HighScoreManager : MonoBehaviour
             }
         }
         Debug.Log(lowestHighScore); 
+        Debug.Log(hasExistingScores);
 
         if (!hasExistingScores || score > lowestHighScore)
         {
             // Show input field for name
             nameInputField.gameObject.SetActive(true);
-            if (nameInputField.text != null) 
-            {
+            newScore = score; 
+        }
+    }
+    private void OnNameInput(string input)
+    {
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            SubmitHighScore(input, newScore);
+            Debug.Log(input + newScore); 
 
-            SubmitHighScore(nameInputField.text, score);
-            }
         }
     }
 
@@ -53,7 +70,7 @@ public class HighScoreManager : MonoBehaviour
         string playerName = newHighScoreName;
         int newScore = newHighScore; 
 
-        // Declare and initialize the list
+        //Create a list which will store the high scores.
         List<(string name, int score)> highScores = new List<(string name, int score)>();
 
         // Get existing scores
@@ -67,7 +84,7 @@ public class HighScoreManager : MonoBehaviour
             }
         }
 
-        // Add new score
+        // Add new score to list
         highScores.Add((playerName, newScore));
 
         // Sort scores in descending order and take top maxHighScores
@@ -84,16 +101,28 @@ public class HighScoreManager : MonoBehaviour
 
         // Hide input field
         nameInputField.gameObject.SetActive(false);
-        scoreLogged = true; 
+        
     }
 
     public void DisplayHighScores()
     {
+        StringBuilder scoreBuilder = new StringBuilder();
+
         for (int i = 1; i <= maxHighScores; i++)
         {
             string name = PlayerPrefs.GetString($"HighScoreName{i}", "---");
             int score = PlayerPrefs.GetInt($"HighScore{i}", 0);
+            scoreBuilder.AppendLine($"#{i}: {name} - {score}");
             Debug.Log($"#{i}: {name} - {score}");
+        }
+        highScoreText.text = scoreBuilder.ToString();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            DisplayHighScores();    
         }
     }
 }

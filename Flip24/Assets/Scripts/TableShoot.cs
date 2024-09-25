@@ -11,6 +11,7 @@ public class TableShoot : MonoBehaviour
     public float torque;
     public Vector3 throwDirection;
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] GameObject table;
     public int spaceButtonPressed;
     CameraScript cameraScript;
 

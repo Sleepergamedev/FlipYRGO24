@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (valueManagerScript.isGameOver)
         {
             CalculateJudgeScore();
         }
