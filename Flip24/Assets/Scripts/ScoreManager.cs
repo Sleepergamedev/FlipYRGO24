@@ -27,7 +27,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (valueManagerScript.isFlipped180 == true)
         {
-            styleFactor = 2;
+            styleFactor = 5;
         }
         if (valueManagerScript.isFlipped270 == true || valueManagerScript.isFlipped90 == true)
         {

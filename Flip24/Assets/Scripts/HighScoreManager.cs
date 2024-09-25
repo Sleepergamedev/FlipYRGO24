@@ -45,8 +45,7 @@ public class HighScoreManager : MonoBehaviour
                 }
             }
         }
-        Debug.Log(lowestHighScore); 
-        Debug.Log(hasExistingScores);
+        
 
         if (!hasExistingScores || score > lowestHighScore)
         {

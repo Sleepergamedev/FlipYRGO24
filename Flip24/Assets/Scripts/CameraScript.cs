@@ -9,7 +9,8 @@ public class CameraScript : MonoBehaviour
     public Camera mainCamera;
     private Vector3 originalPosition;
     private float originalSize;
-    Vector3 cameraOffset = new Vector3(0, 2.8f, -10);
+    Vector3 cameraOffset = new Vector3(0, 2.5f, -10);
+    Vector3 shakeCameraOffset = new Vector3(0, 2f, -10);
     public bool launchReady;
 
     [Header("Camera Zoom Specs")]
@@ -17,6 +18,8 @@ public class CameraScript : MonoBehaviour
     public float shakeDuration = 2f;
     public float shakeIntensity = 0.1f;
     bool isShaking = false;
+
+    
 
     //private 
     TableShoot shootScript;
@@ -48,10 +51,14 @@ public class CameraScript : MonoBehaviour
         if (!isShaking)
         {
             Vector2 smoothFollow = Vector2.Lerp(mainCamera.transform.position, transform.position, smoothSpeed);
-            if (mainCamera.transform.position.y <= 2.5f)
+            if (transform.position.y < 0.5f) 
             {
                 smoothFollow = Vector2.Lerp(mainCamera.transform.position, transform.position + cameraOffset, smoothSpeed);
             }
+            //if (mainCamera.transform.position.y <= 2.5f)
+            //{
+            //    smoothFollow = Vector2.Lerp(mainCamera.transform.position, transform.position + cameraOffset, smoothSpeed);
+            //}
             mainCamera.transform.position = smoothFollow;
         }
 
@@ -77,7 +84,7 @@ public class CameraScript : MonoBehaviour
 
             float currentIntensity = shakeIntensity * (elapsedTime / shakeDuration);
 
-            mainCamera.transform.position = originalPosition + Random.insideUnitSphere * currentIntensity;
+            mainCamera.transform.position = transform.position + shakeCameraOffset + Random.insideUnitSphere * currentIntensity;
 
             yield return null;
         }
