@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PlayAudio : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Rigidbody2D rb;
     void Start()
     {
-
+      rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -18,7 +17,10 @@ public class PlayAudio : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if (rb.velocity.x >= 5)
+        {
         GetComponent<AudioSource>().pitch = Random.Range(0.5f, 1.5f);
         GetComponent<AudioSource>().Play();
+        }
     }
 }

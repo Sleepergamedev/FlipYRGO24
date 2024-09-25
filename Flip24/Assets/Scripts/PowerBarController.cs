@@ -10,6 +10,7 @@ public class PowerBarController : MonoBehaviour
     public Image fillImage;
     public float powerBarSpeed = 1;
     public float setPower;
+    public float powerDivider;
     TableShoot shootScript;
 
     private float initialFillWidth;
@@ -40,7 +41,7 @@ public class PowerBarController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && shootScript.spaceButtonPressed == 0)
         {
             Debug.Log("space");
-            setPower = powerBar.value / 3;
+            setPower = powerBar.value / powerDivider;
             Debug.Log(setPower);
             shootScript.throwStrength = setPower;
             powerBarSpeed = 0;
