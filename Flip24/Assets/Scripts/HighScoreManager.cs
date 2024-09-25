@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
@@ -10,6 +11,7 @@ using UnityEngine.UI;
 public class HighScoreManager : MonoBehaviour
 {
     public TMP_InputField nameInputField;
+    public TMP_Text highScoreText; 
     public int maxHighScores = 5;
     ScoreManager scoreManager;
 
@@ -104,12 +106,16 @@ public class HighScoreManager : MonoBehaviour
 
     public void DisplayHighScores()
     {
+        StringBuilder scoreBuilder = new StringBuilder();
+
         for (int i = 1; i <= maxHighScores; i++)
         {
             string name = PlayerPrefs.GetString($"HighScoreName{i}", "---");
             int score = PlayerPrefs.GetInt($"HighScore{i}", 0);
+            scoreBuilder.AppendLine($"#{i}: {name} - {score}");
             Debug.Log($"#{i}: {name} - {score}");
         }
+        highScoreText.text = scoreBuilder.ToString();
     }
 
     private void Update()

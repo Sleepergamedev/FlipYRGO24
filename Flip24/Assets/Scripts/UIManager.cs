@@ -10,7 +10,8 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance => _instance;
     public SpriteRenderer backShade;
     public GameObject judges;
-    
+    public Button playAgainButton;
+    public Button menuButton; 
 
     private void Awake()
     {
