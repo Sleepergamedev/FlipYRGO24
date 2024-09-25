@@ -6,11 +6,13 @@ public class ScoreManager : MonoBehaviour
 {
 
     ValueManager valueManagerScript;
-    public float finalScore;
-    private float styleFactor;
+    public int finalScore;
+    private int styleFactor;
+    HighScoreManager highScoreManager;
     void Start()
     {
         valueManagerScript = FindFirstObjectByType<ValueManager>();
+        highScoreManager = FindFirstObjectByType<HighScoreManager>();
     }
 
     void Update()
@@ -25,17 +27,19 @@ public class ScoreManager : MonoBehaviour
     {
         if (valueManagerScript.isFlipped180 == true)
         {
-            styleFactor = 1.5f;
+            styleFactor = 2;
         }
         if (valueManagerScript.isFlipped270 == true || valueManagerScript.isFlipped90 == true)
         {
-            styleFactor = 5f;
+            styleFactor = 5;
         }
         else
         {
-            styleFactor = 1f;
+            styleFactor = 1;
         }
         finalScore = valueManagerScript.metresFlown * styleFactor;
+        highScoreManager.LogHighScore(finalScore); 
+
         Debug.Log("your final score is: " + finalScore);
     }
 }
