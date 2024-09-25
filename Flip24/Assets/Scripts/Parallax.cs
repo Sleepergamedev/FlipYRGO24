@@ -26,6 +26,7 @@ public class Parallax : MonoBehaviour
         if (simulatedDistance == 0) return; // stops dividing by zero
         Vector3 camDelta = cam.position - prevCamPos;
         camDelta.z = 0;
+        camDelta.y = 0;
         prevCamPos = cam.position;
         transform.position += camDelta;
         transform.position += (camDelta / simulatedDistance) * flip;

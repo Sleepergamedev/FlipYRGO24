@@ -13,7 +13,8 @@ public class UIManagerMainScene : MonoBehaviour
     public Button menuButton;
     public GameObject highScoreBoard;
     public GameObject scoreBoard; 
-    public TMP_Text uiScore; 
+    public TMP_Text uiScore;
+    public TMP_Text scoreBoardScore; 
     ValueManager valueManager;
     HighScoreManager highScoreManager;
     // Start is called before the first frame update
@@ -53,6 +54,11 @@ public class UIManagerMainScene : MonoBehaviour
     {
         highScoreBoard.SetActive(false);
         scoreBoard.SetActive(true);
+    }
+
+    public void ScoreBoardScore(int score)
+    {
+        scoreBoardScore.text = ""+score.ToString();
     }
 
     private void LoadMenuScene()
