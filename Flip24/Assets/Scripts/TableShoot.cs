@@ -12,6 +12,7 @@ public class TableShoot : MonoBehaviour
     public Vector3 throwDirection;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] GameObject table;
+    [SerializeField] Animator animator;
     public int spaceButtonPressed;
     CameraScript cameraScript;
 
@@ -27,6 +28,7 @@ public class TableShoot : MonoBehaviour
         //if sats för att skjuta iväg spelaren beroende på spelarens input
         if (spaceButtonPressed == 2 && cameraScript.launchReady)
         {
+            animator.Play("New State");
             rb.AddForce(throwDirection.normalized * throwStrength, ForceMode2D.Impulse);
             rb.AddTorque(-torque, ForceMode2D.Force);
             spaceButtonPressed = 0;
