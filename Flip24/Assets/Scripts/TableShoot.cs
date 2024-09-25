@@ -13,7 +13,7 @@ public class TableShoot : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] GameObject table;
     [SerializeField] Animator animator;
-    public int spaceButtonPressed;
+    public int spaceButtonPressed = 0;
     CameraScript cameraScript;
 
 
