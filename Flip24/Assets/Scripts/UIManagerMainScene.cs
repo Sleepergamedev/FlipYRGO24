@@ -5,25 +5,54 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Runtime.CompilerServices;
 
 public class UIManagerMainScene : MonoBehaviour
 {
     public Button playAgainButton;
     public Button menuButton;
+    public GameObject highScoreBoard;
+    public GameObject scoreBoard; 
     public TMP_Text uiScore; 
     ValueManager valueManager;
+    HighScoreManager highScoreManager;
     // Start is called before the first frame update
     void Start()
     {
         valueManager = FindFirstObjectByType<ValueManager>();
+        highScoreManager = FindFirstObjectByType<HighScoreManager>();
         playAgainButton.onClick.AddListener(ReloadScene);
         menuButton.onClick.AddListener(LoadMenuScene);
+        
         
     }
 
     private void Update()
     {
         ScoreUpdate(valueManager.metresFlown);
+        if (highScoreManager.highScoreActive && valueManager.isGameOver)
+        {
+            ShowHighScoreBoard();
+        }
+        
+        if (highScoreManager.highScoreActive == false && valueManager.isGameOver)
+        {
+            ShowScoreBoard();
+            highScoreManager.DisplayHighScores();
+        }
+
+    }
+
+    private void ShowHighScoreBoard()
+    {
+        highScoreBoard.SetActive(true);
+    }
+
+
+    private void ShowScoreBoard()
+    {
+        highScoreBoard.SetActive(false);
+        scoreBoard.SetActive(true);
     }
 
     private void LoadMenuScene()
