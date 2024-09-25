@@ -932,6 +932,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backShade: {fileID: 1902891716}
   judges: {fileID: 185597914}
+  playAgainButton: {fileID: 0}
+  menuButton: {fileID: 0}
 --- !u!1001 &4561287979349884175
 PrefabInstance:
   m_ObjectHideFlags: 0
