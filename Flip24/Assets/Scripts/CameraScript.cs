@@ -9,7 +9,7 @@ public class CameraScript : MonoBehaviour
     public Camera mainCamera;
     private Vector3 originalPosition;
     private float originalSize;
-    Vector3 cameraOffset = new Vector3(0, 2.5f, -10);
+    Vector3 cameraOffset = new Vector3(0, 2.8f, -10);
     public bool launchReady;
 
     [Header("Camera Zoom Specs")]
