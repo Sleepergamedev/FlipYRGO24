@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1683603871905788154}
   m_Layer: 0
   m_Name: table 1
-  m_TagString: Untagged
+  m_TagString: table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,10 +196,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   metresFlown: 0
+  notFlipped: 0
   isFlipped180: 0
   isFlipped90: 0
   isFlipped270: 0
   isGameOver: 0
+  timeToEnd: 0
   rb: {fileID: 2865210885757242247}
 --- !u!82 &5662594099178691307
 AudioSource:

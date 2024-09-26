@@ -2,21 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
+using System.Runtime.CompilerServices;
 
 public class PowerBarController : MonoBehaviour
 {
     public RectTransform fillRect;
     public Slider powerBar;
     public Image fillImage;
+    public GameObject sweetSpot; 
     public float powerBarSpeed = 1;
+    float powerBarFill;
     public float setPower;
-    public float powerDivider;
+    public float powerMultiplier = 50;
+    float powerBarRaw;
+    float elapsedTime; 
     TableShoot shootScript;
-
+    [SerializeField] AnimationCurve powerBarCurve;
+    [SerializeField] AnimationCurve sweetSpotCurve; 
     private float initialFillWidth;
 
+    bool hasElapsed; 
 
-    // Start is called before the first frame update
     void Start()
     {
         shootScript = FindFirstObjectByType<TableShoot>();
@@ -24,31 +31,70 @@ public class PowerBarController : MonoBehaviour
         fillImage.type = Image.Type.Filled;
         fillImage.fillMethod = Image.FillMethod.Horizontal;
         fillImage.fillOrigin = (int)Image.OriginHorizontal.Left;
+        sweetSpot.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        powerBar.value += powerBarSpeed * 2 * Time.deltaTime;
-        if (powerBar.value >= powerBar.maxValue || powerBar.value <= powerBar.minValue)
+        powerBarRaw += powerBarSpeed * Time.deltaTime;
+
+        
+        powerBarRaw = Mathf.Clamp(powerBarRaw, 0f, 1f);
+
+        float curvedValue = powerBarCurve.Evaluate(powerBarRaw);
+
+        // Set the power bar value
+        powerBar.value = Mathf.Lerp(powerBar.minValue, powerBar.maxValue, curvedValue);
+
+        // Reverse direction 
+        if (powerBarRaw >= 1f || powerBarRaw <= 0f)
         {
             powerBarSpeed = -powerBarSpeed;
         }
 
-        float fillAmount = (powerBar.value - powerBar.minValue) / (powerBar.maxValue - powerBar.minValue);
-        fillImage.fillAmount = fillAmount;
+        
+        fillImage.fillAmount = (powerBar.value - powerBar.minValue) / (powerBar.maxValue - powerBar.minValue);
 
+        
         if (Input.GetKeyDown(KeyCode.Space) && shootScript.spaceButtonPressed == 0)
         {
-            Debug.Log("space");
-            setPower = powerBar.value / powerDivider;
-            Debug.Log(setPower);
+            setPower = powerBar.value * powerMultiplier;
             shootScript.throwStrength = setPower;
             powerBarSpeed = 0;
             shootScript.spaceButtonPressed = 1;
+            
+            
+        }
+        if (shootScript.spaceButtonPressed == 2) 
+        {
             powerBar.gameObject.SetActive(false);
+        }
+   
+
+        if (setPower >= 1)
+        {
+            elapsedTime += Time.deltaTime;  
+            
+            if (elapsedTime <= 0.3f)
+            {
+                sweetSpot.SetActive(true);
+                sweetSpot.transform.localScale += Vector3.one * 3 * Time.deltaTime;
+                
+
+            }
+
+             
+            else if (elapsedTime >= 0.31f)
+            {
+                
+                sweetSpot.SetActive(false);
+                
+            }
 
         }
 
+        }
     }
-}
+
+
+  

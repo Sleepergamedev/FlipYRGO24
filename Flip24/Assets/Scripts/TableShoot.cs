@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Callbacks;
+
 using UnityEngine;
 
 public class TableShoot : MonoBehaviour
@@ -13,13 +11,14 @@ public class TableShoot : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] GameObject table;
     [SerializeField] Animator explodeAnimator;
-    public int spaceButtonPressed = 0;
+    public int spaceButtonPressed;
     CameraScript cameraScript;
 
 
 
     private void Start()
     {
+        spaceButtonPressed = 0;
         cameraScript = FindFirstObjectByType<CameraScript>();
         rb = table.GetComponent<Rigidbody2D>();
 
@@ -32,7 +31,7 @@ public class TableShoot : MonoBehaviour
             explodeAnimator.Play("New State");
             rb.AddForce(throwDirection.normalized * throwStrength, ForceMode2D.Impulse);
             rb.AddTorque(-torque, ForceMode2D.Impulse);
-            spaceButtonPressed = 0;
+            spaceButtonPressed = 3;
         }
     }
 }
