@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
@@ -7,8 +8,11 @@ public class GameStateManager : MonoBehaviour
 
     private ValueManager valueScript;
     [SerializeField] GameObject tablePos;
+    private Rigidbody2D rb;
+    [SerializeField] TMP_Text speedText;
     void Start()
     {
+        rb = tablePos.GetComponent<Rigidbody2D>();
         valueScript = FindFirstObjectByType<ValueManager>();
         UIManager.Instance.backShade.gameObject.SetActive(false);
         UIManager.Instance.judges.gameObject.SetActive(false);
@@ -17,6 +21,7 @@ public class GameStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        speedText.text = "Speed: " + Mathf.Abs(Mathf.RoundToInt(rb.velocity.x + rb.velocity.y)).ToString() + "m/s";
         if (valueScript.isGameOver == true)
         {
             Debug.Log("game over");
