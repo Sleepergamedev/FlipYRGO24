@@ -68,17 +68,13 @@ public class PowerBarController : MonoBehaviour
         {
             powerBar.gameObject.SetActive(false);
         }
-        //if (hasElapsed)
-        //{
-        //    elapsedTime = 0;
-        //    hasElapsed = false;
-        //}
+   
 
-        if (setPower >= 1)
+        if (setPower >= 45)
         {
             elapsedTime += Time.deltaTime;  
             
-            if (elapsedTime <= 0.2f)
+            if (elapsedTime <= 0.3f)
             {
                 sweetSpot.SetActive(true);
                 sweetSpot.transform.localScale += Vector3.one * 2 * Time.deltaTime;
@@ -87,7 +83,7 @@ public class PowerBarController : MonoBehaviour
             }
 
              
-            else if (elapsedTime >= 0.21f)
+            else if (elapsedTime >= 0.31f)
             {
                 
                 sweetSpot.SetActive(false);
