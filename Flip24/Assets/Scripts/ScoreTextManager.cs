@@ -32,7 +32,7 @@ public class ScoreTextManager : MonoBehaviour
             // multText.transform.SetParent(text.transform);
             madeText = true;
         }
-        if (valueScript.isFlipped90 && madeText == false && scoreScript.styleFactor > 1 || valueScript.isFlipped270 && madeText == false && scoreScript.styleFactor > 1)
+        if ((valueScript.isFlipped90 || valueScript.isFlipped270) && madeText == false && scoreScript.styleFactor > 1)
         {
             Instantiate(multText, transform.position, transform.rotation);
             //   multText.transform.SetParent(text.transform);
