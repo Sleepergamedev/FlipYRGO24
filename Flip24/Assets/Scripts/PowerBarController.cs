@@ -17,6 +17,7 @@ public class PowerBarController : MonoBehaviour
     public float setPower;
     public float powerMultiplier = 50;
     float powerBarRaw;
+    private bool startCount;
     float elapsedTime;
     TableShoot shootScript;
     [SerializeField] AnimationCurve powerBarCurve;
@@ -42,6 +43,11 @@ public class PowerBarController : MonoBehaviour
     {
         powerBarRaw += powerBarSpeed * Time.deltaTime;
 
+        if (startCount)
+        {
+            angleScript.inputCooldown += 1 * Time.deltaTime;
+        }
+
 
         powerBarRaw = Mathf.Clamp(powerBarRaw, 0f, 1f);
 
@@ -66,8 +72,8 @@ public class PowerBarController : MonoBehaviour
             shootScript.throwStrength = setPower;
             powerBarSpeed = 0;
             shootScript.spaceButtonPressed = 1;
-            angleScript.inputCooldown += 1 * Time.deltaTime;
             isIndicating = true;
+            startCount = true;
 
         }
         if (shootScript.spaceButtonPressed == 2)
