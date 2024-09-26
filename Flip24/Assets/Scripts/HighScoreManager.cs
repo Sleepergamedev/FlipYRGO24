@@ -14,6 +14,7 @@ public class HighScoreManager : MonoBehaviour
     public TMP_Text highScoreText;
     public int maxHighScores = 5;
     ScoreManager scoreManager;
+    UIManagerMainScene uiMainScene; 
 
     public bool highScoreActive;
     int newScore;
@@ -22,15 +23,16 @@ public class HighScoreManager : MonoBehaviour
     {
         scoreManager = FindFirstObjectByType<ScoreManager>();
         nameInputField.onEndEdit.AddListener(OnNameInput);
-
+        uiMainScene = FindFirstObjectByType<UIManagerMainScene>();
     }
 
 
 
     public void LogHighScore(int score)
     {
-        Debug.Log(score);
+        
         int lowestHighScore = int.MaxValue;
+        int emptySlot = -1; 
         bool hasExistingScores = false;
 
         for (int i = 1; i <= maxHighScores; i++)
@@ -44,15 +46,20 @@ public class HighScoreManager : MonoBehaviour
                     lowestHighScore = currentScore;
                 }
             }
+            else if (emptySlot == -1) 
+            {
+                emptySlot = i; 
+            }
         }
 
 
-        if (!hasExistingScores || score > lowestHighScore)
+        if (!hasExistingScores || score > lowestHighScore || emptySlot != -1)
         {
             // Show input field for name
             highScoreActive = true;
             nameInputField.gameObject.SetActive(true);
             newScore = score;
+            uiMainScene.HighScoreBoardScore(newScore);
         }
     }
     private void OnNameInput(string input)
@@ -67,6 +74,7 @@ public class HighScoreManager : MonoBehaviour
 
     public void SubmitHighScore(string newHighScoreName, int newHighScore)
     {
+        
         string playerName = newHighScoreName;
         int newScore = newHighScore;
 
@@ -118,11 +126,22 @@ public class HighScoreManager : MonoBehaviour
         highScoreText.text = scoreBuilder.ToString();
     }
 
-    private void Update()
+    public void ResetHighScores()
+    {
+        for (int i = 1; i <= maxHighScores; i++)
+        {
+            PlayerPrefs.DeleteKey($"HighScoreName{i}");
+            PlayerPrefs.DeleteKey($"HighScore{i}");
+        }
+        PlayerPrefs.Save();
+        Debug.Log("High scores have been reset.");
+    }
+
+        private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            DisplayHighScores();
+            ResetHighScores();
         }
     }
 }
