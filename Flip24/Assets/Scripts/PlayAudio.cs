@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class PlayAudio : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    void Start()
-    {
-      rb = GetComponent<Rigidbody2D>();
-    }
+  private Rigidbody2D rb;
+  void Start()
+  {
+    rb = GetComponent<Rigidbody2D>();
+  }
 
-    void Update()
-    {
+  void Update()
+  {
 
-    }
+  }
 
-    private void OnCollisionEnter2D(Collision2D other)
+  private void OnCollisionEnter2D(Collision2D other)
+  {
+    if (rb.velocity.x >= 5)
     {
-        if (rb.velocity.x >= 5)
-        {
-        GetComponent<AudioSource>().pitch = Random.Range(0.5f, 1.5f);
-        GetComponent<AudioSource>().Play();
-        }
+      GetComponent<AudioSource>().pitch = Random.Range(0.5f, 1.5f);
+      GetComponent<AudioSource>().Play();
     }
+  }
 }
