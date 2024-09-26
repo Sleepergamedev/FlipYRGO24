@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
-using System.Runtime.CompilerServices;
-using System;
+
 
 public class PowerBarController : MonoBehaviour
 {
@@ -23,9 +21,12 @@ public class PowerBarController : MonoBehaviour
     TableShoot shootScript;
     [SerializeField] AnimationCurve powerBarCurve;
     [SerializeField] AnimationCurve sweetSpotCurve;
+    [SerializeField] AnimationCurve sweetSpotColorCurve;
+    [SerializeField] Gradient sweetSpotGradient; 
     private float initialFillWidth;
     private AngleScript angleScript;
 
+    float changeColorSpeed = 1; 
     bool hasElapsed;
     bool isIndicating;
 
@@ -99,7 +100,7 @@ public class PowerBarController : MonoBehaviour
         if (powerPercentage < 0.75) return "Better...";
         if (powerPercentage < 0.8) return "Nice!";
         if (powerPercentage < 0.98) return "WoW!";
-        if (powerPercentage < 0.99) return "Epic!";
+        if (powerPercentage < 0.99999999) return "Epic!";
         if (powerPercentage == 1) return "Insane!!"; 
 
         return string.Empty;
@@ -108,16 +109,30 @@ public class PowerBarController : MonoBehaviour
     {
         if (string.IsNullOrEmpty(text)) return;
         powerFeedback.text = text;
-        
         sweetSpot.SetActive(true );
+        powerFeedback.enabled = true;
+        StartCoroutine(ChangeTextColor() );
         sweetSpot.transform.localScale += Vector3.one * Time.deltaTime;
 
         StartCoroutine(HideFeedbackAfterDelay(0.5f));
     }
-    private System.Collections.IEnumerator HideFeedbackAfterDelay(float delay)
+
+    private IEnumerator ChangeTextColor()
+    {
+        float elapsedTime = 0; 
+        while (powerFeedback.enabled)
+        {
+            elapsedTime += Time.deltaTime * changeColorSpeed;
+            float colorIndex = Mathf.PingPong(elapsedTime, 1f);
+            powerFeedback.color = sweetSpotGradient.Evaluate(colorIndex);
+            yield return null; 
+        }
+    }
+    private IEnumerator HideFeedbackAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         sweetSpot.SetActive(false);
+        powerFeedback.enabled=false;
         isIndicating = false;
     }
 
