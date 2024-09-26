@@ -42,7 +42,9 @@ public class ScoreTextManager : MonoBehaviour
             madeText = true;
             sound.PlayOneShot(sound.clip);
         }
-        text.text = valueScript.metresFlown * scoreScript.styleFactor + " points";
+
+        int finalScore = valueScript.metresFlown * scoreScript.styleFactor;
+        text.text = finalScore.ToString("D5") + " points";
 
         text.fontSize = fontSize * Mathf.Sin(Time.time) / 8 + 50;
     }
