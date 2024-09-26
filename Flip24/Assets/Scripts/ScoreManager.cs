@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
 
     ValueManager valueManagerScript;
     public int finalScore;
-    private int styleFactor;
+    public int styleFactor;
     HighScoreManager highScoreManager;
     UIManagerMainScene mainSceneUi;
 
@@ -40,10 +40,10 @@ public class ScoreManager : MonoBehaviour
         {
             styleFactor = 5;
         }
-            finalScore = valueManagerScript.metresFlown * styleFactor;
-            highScoreManager.LogHighScore(finalScore);
-            mainSceneUi.ScoreBoardScore(finalScore);
-            Debug.Log(styleFactor);
-            Debug.Log("your final score is: " + finalScore);
+        finalScore = valueManagerScript.metresFlown * styleFactor;
+        highScoreManager.LogHighScore(finalScore);
+        mainSceneUi.ScoreBoardScore(finalScore);
+        Debug.Log(styleFactor);
+        Debug.Log("your final score is: " + finalScore);
     }
 }
