@@ -10,7 +10,8 @@ public class PowerBarController : MonoBehaviour
     public RectTransform fillRect;
     public Slider powerBar;
     public Image fillImage;
-    public GameObject sweetSpot; 
+    public GameObject sweetSpot;
+    public TMP_Text powerFeedback; 
     public float powerBarSpeed = 1;
     float powerBarFill;
     public float setPower;
@@ -22,7 +23,8 @@ public class PowerBarController : MonoBehaviour
     [SerializeField] AnimationCurve sweetSpotCurve; 
     private float initialFillWidth;
 
-    bool hasElapsed; 
+    bool hasElapsed;
+    bool isIndicating;
 
     void Start()
     {
@@ -62,16 +64,64 @@ public class PowerBarController : MonoBehaviour
             shootScript.throwStrength = setPower;
             powerBarSpeed = 0;
             shootScript.spaceButtonPressed = 1;
-            
+            isIndicating = true;
             
         }
         if (shootScript.spaceButtonPressed == 2) 
         {
             powerBar.gameObject.SetActive(false);
         }
-   
 
-        if (setPower >= 1)
+
+        if (setPower < powerMultiplier * 0.3f && isIndicating)
+        {
+            elapsedTime += Time.deltaTime;
+
+            if (elapsedTime <= 0.3f)
+            {
+                sweetSpot.SetActive(true);
+                sweetSpot.transform.localScale += Vector3.one * 3 * Time.deltaTime;
+                powerFeedback.text = "Mediocre!";
+
+
+            }
+
+
+            else if (elapsedTime >= 0.31f)
+            {
+
+                sweetSpot.SetActive(false);
+
+            }
+
+        }
+
+
+
+        if (setPower <= powerMultiplier * 0.5 && setPower >= powerMultiplier * 0.3 && isIndicating)
+        {
+            elapsedTime += Time.deltaTime;
+
+            if (elapsedTime <= 0.3f)
+            {
+                sweetSpot.SetActive(true);
+                sweetSpot.transform.localScale += Vector3.one * 3 * Time.deltaTime;
+                powerFeedback.text = "OK...";
+
+
+            }
+
+
+            else if (elapsedTime >= 0.31f)
+            {
+
+                sweetSpot.SetActive(false);
+
+            }
+
+        }
+
+        if (setPower >= powerMultiplier * 0.98 && isIndicating)
         {
             elapsedTime += Time.deltaTime;  
             
@@ -79,6 +129,7 @@ public class PowerBarController : MonoBehaviour
             {
                 sweetSpot.SetActive(true);
                 sweetSpot.transform.localScale += Vector3.one * 3 * Time.deltaTime;
+                powerFeedback.text = "Nice!"; 
                 
 
             }

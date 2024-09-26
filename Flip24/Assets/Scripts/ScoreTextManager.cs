@@ -13,6 +13,7 @@ public class ScoreTextManager : MonoBehaviour
     private ScoreManager scoreScript;
     [SerializeField] GameObject multText;
     private bool madeText = false;
+    private AudioSource sound;
     void Start()
     {
         fontSize = GetComponent<TMP_Text>().fontSize;
@@ -20,6 +21,7 @@ public class ScoreTextManager : MonoBehaviour
         text = GetComponent<TMP_Text>();
         scoreScript = FindFirstObjectByType<ScoreManager>();
         valueScript = FindFirstObjectByType<ValueManager>();
+        sound = GetComponent<AudioSource>();
 
 
     }
@@ -31,12 +33,14 @@ public class ScoreTextManager : MonoBehaviour
             Instantiate(multText, transform);
             // multText.transform.SetParent(text.transform);
             madeText = true;
+            sound.PlayOneShot(sound.clip);
         }
         if ((valueScript.isFlipped90 || valueScript.isFlipped270) && madeText == false && scoreScript.styleFactor > 1)
         {
             Instantiate(multText, transform.position, transform.rotation);
             //   multText.transform.SetParent(text.transform);
             madeText = true;
+            sound.PlayOneShot(sound.clip);
         }
         text.text = valueScript.metresFlown * scoreScript.styleFactor + " points";
 
