@@ -2551,16 +2551,20 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4348316223117871511, guid: e8f1295175f579c429221eea65423f1c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348316223117871511, guid: e8f1295175f579c429221eea65423f1c, type: 3}
       propertyPath: simulatedDistance
-      value: 20
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 5835534161405504309, guid: e8f1295175f579c429221eea65423f1c, type: 3}
       propertyPath: m_Size.x
-      value: 40
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 5835534161405504309, guid: e8f1295175f579c429221eea65423f1c, type: 3}
       propertyPath: m_Size.y
-      value: 45
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 5835534161405504309, guid: e8f1295175f579c429221eea65423f1c, type: 3}
       propertyPath: m_DrawMode
@@ -2596,11 +2600,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8701860631385442413, guid: e8f1295175f579c429221eea65423f1c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2
+      value: 7.6
       objectReference: {fileID: 0}
     - target: {fileID: 8701860631385442413, guid: e8f1295175f579c429221eea65423f1c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.8
+      value: 31.6
       objectReference: {fileID: 0}
     - target: {fileID: 8892673521420802468, guid: e8f1295175f579c429221eea65423f1c, type: 3}
       propertyPath: m_Name
