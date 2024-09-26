@@ -21,7 +21,7 @@ public class GameStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speedText.text = "Speed: " + Mathf.RoundToInt(rb.velocity.x).ToString();
+        speedText.text = "Speed: " + Mathf.Abs(Mathf.RoundToInt(rb.velocity.x + rb.velocity.y)).ToString() + "m/s";
         if (valueScript.isGameOver == true)
         {
             Debug.Log("game over");
