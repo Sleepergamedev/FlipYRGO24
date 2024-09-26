@@ -89,6 +89,7 @@ public class PlayAudio : MonoBehaviour
     {
         if (rb.velocity.x >= 5)
         {
+            audioSrc.Stop();
             audioSrc.loop = false;
 
             //Stop these Coroutines to be completely 
@@ -98,7 +99,7 @@ public class PlayAudio : MonoBehaviour
 
             audioSrc.volume = 1.0f;
             audioSrc.pitch = Random.Range(0.5f, 1.5f);
-            audioSrc.PlayOneShot(hitHurt);
+            audioSrc.PlayOneShot(hitHurt, 0.75f);
         }
     }
 }
