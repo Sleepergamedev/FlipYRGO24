@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 using System.Runtime.CompilerServices;
+using System;
 
 public class PowerBarController : MonoBehaviour
 {
@@ -76,84 +77,126 @@ public class PowerBarController : MonoBehaviour
             startCount = true;
 
         }
-        if (shootScript.spaceButtonPressed == 2)
-        {
-            powerBar.gameObject.SetActive(false);
-        }
+        UpdateFeedback();
 
-
-        if (setPower < powerMultiplier * 0.3f && isIndicating)
-        {
-            elapsedTime += Time.deltaTime;
-
-            if (elapsedTime <= 0.3f)
-            {
-                sweetSpot.SetActive(true);
-                sweetSpot.transform.localScale += Vector3.one * 3 * Time.deltaTime;
-                powerFeedback.text = "Mediocre!";
-
-
-            }
-
-
-            else if (elapsedTime >= 0.31f)
-            {
-
-                sweetSpot.SetActive(false);
-
-            }
-
-        }
-
-
-
-        if (setPower <= powerMultiplier * 0.5 && setPower >= powerMultiplier * 0.3 && isIndicating)
-        {
-            elapsedTime += Time.deltaTime;
-
-            if (elapsedTime <= 0.3f)
-            {
-                sweetSpot.SetActive(true);
-                sweetSpot.transform.localScale += Vector3.one * 3 * Time.deltaTime;
-                powerFeedback.text = "OK...";
-
-
-            }
-
-
-            else if (elapsedTime >= 0.31f)
-            {
-
-                sweetSpot.SetActive(false);
-
-            }
-
-        }
-
-        if (setPower >= powerMultiplier * 0.98 && isIndicating)
-        {
-            elapsedTime += Time.deltaTime;
-
-            if (elapsedTime <= 0.3f)
-            {
-                sweetSpot.SetActive(true);
-                sweetSpot.transform.localScale += Vector3.one * 3 * Time.deltaTime;
-                powerFeedback.text = "Nice!";
-
-
-            }
-
-
-            else if (elapsedTime >= 0.31f)
-            {
-
-                sweetSpot.SetActive(false);
-
-            }
-
-        }
 
     }
+
+    private void UpdateFeedback()
+    {
+        if (!isIndicating) return;
+
+        string feedbackText = GetFeedBackText();
+        ShowFeedBack(feedbackText);
+    }
+
+
+    private string GetFeedBackText()
+    {
+        float powerPercentage = setPower / (float)powerMultiplier;
+        if (powerPercentage < 0.3f) return "Mediocre!";
+        if (powerPercentage < 0.5) return "OK...";
+        if (powerPercentage < 0.75) return "Better...";
+        if (powerPercentage < 0.8) return "Nice!";
+        if (powerPercentage < 0.98) return "WoW!";
+        if (powerPercentage < 0.99) return "Epic!";
+        if (powerPercentage == 1) return "Insane!!"; 
+
+        return string.Empty;
+    }
+    private void ShowFeedBack(string text)
+    {
+        if (string.IsNullOrEmpty(text)) return;
+        powerFeedback.text = text;
+        
+        sweetSpot.SetActive(true );
+        sweetSpot.transform.localScale += Vector3.one * Time.deltaTime;
+
+        StartCoroutine(HideFeedbackAfterDelay(0.5f));
+    }
+    private System.Collections.IEnumerator HideFeedbackAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        sweetSpot.SetActive(false);
+        isIndicating = false;
+    }
+
+    //if (shootScript.spaceButtonPressed == 2)
+    //{
+    //    powerBar.gameObject.SetActive(false);
+    //}
+
+
+    //if (setPower < powerMultiplier * 0.3f && isIndicating)
+    //{
+    //    elapsedTime += Time.deltaTime;
+
+    //    if (elapsedTime <= 0.3f)
+    //    {
+    //        sweetSpot.SetActive(true);
+    //        sweetSpot.transform.localScale += Vector3.one * 3 * Time.deltaTime;
+    //        powerFeedback.text = "Mediocre!";
+
+
+    //    }
+
+
+    //    else if (elapsedTime >= 0.31f)
+    //    {
+
+    //        sweetSpot.SetActive(false);
+
+    //    }
+
+    //}
+
+
+
+    //if (setPower <= powerMultiplier * 0.5 && setPower >= powerMultiplier * 0.3 && isIndicating)
+    //{
+    //    elapsedTime += Time.deltaTime;
+
+    //    if (elapsedTime <= 0.3f)
+    //    {
+    //        sweetSpot.SetActive(true);
+    //        sweetSpot.transform.localScale += Vector3.one * 3 * Time.deltaTime;
+    //        powerFeedback.text = "OK...";
+
+
+    //    }
+
+
+    //    else if (elapsedTime >= 0.31f)
+    //    {
+
+    //        sweetSpot.SetActive(false);
+
+    //    }
+
+    //}
+
+    //if (setPower >= powerMultiplier * 0.98 && isIndicating)
+    //{
+    //    elapsedTime += Time.deltaTime;
+
+    //    if (elapsedTime <= 0.3f)
+    //    {
+    //        sweetSpot.SetActive(true);
+    //        sweetSpot.transform.localScale += Vector3.one * 3 * Time.deltaTime;
+    //        powerFeedback.text = "Nice!";
+
+
+    //    }
+
+
+    //    else if (elapsedTime >= 0.31f)
+    //    {
+
+    //        sweetSpot.SetActive(false);
+
+    //    }
+
+    //}
 }
 
 
