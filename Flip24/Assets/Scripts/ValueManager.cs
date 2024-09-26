@@ -37,7 +37,7 @@ public class ValueManager : MonoBehaviour
 
         if (tableShoot.hasShot)
         {
-            if (transform.position.x > 0 && rb.velocity.x <= 0f)
+            if (transform.position.x > 0 && rb.velocity.x == 0f)
             {
                 startCount = true;
             }
@@ -48,7 +48,7 @@ public class ValueManager : MonoBehaviour
             timer += 1 * Time.deltaTime;
         }
         
-        if (transform.position.x > 0 && rb.velocity.x <= 0 && timer >= timeToEnd)
+        if (tableShoot.hasShot && rb.velocity.x == 0 && timer >= timeToEnd)
         {
             isGameOver = true;
             startCount = true;
