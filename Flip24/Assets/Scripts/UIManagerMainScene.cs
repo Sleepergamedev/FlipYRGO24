@@ -70,6 +70,7 @@ public class UIManagerMainScene : MonoBehaviour
     private void LoadMenuScene()
     {
         SceneManager.LoadScene(0, LoadSceneMode.Single);
+        Destroy(GameObject.Find("MusicManager"));
     }
 
     private void ReloadScene()
