@@ -10,7 +10,7 @@ public class CameraScript : MonoBehaviour
     private Vector3 originalPosition;
     private float originalSize;
     Vector3 cameraOffset = new Vector3(0, 2.5f, -10);
-    Vector3 shakeCameraOffset = new Vector3(0, 2f, -10);
+    Vector3 shakeCameraOffset = new Vector3(0, 2.5f, -10);
     public bool launchReady;
 
     [Header("Camera Zoom Specs")]

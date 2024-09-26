@@ -30,7 +30,7 @@ public class TableShoot : MonoBehaviour
             explodeAnimator.Play("New State");
             rb.AddForce(throwDirection.normalized * throwStrength, ForceMode2D.Impulse);
             rb.AddTorque(-torque, ForceMode2D.Impulse);
-            spaceButtonPressed = 0;
+            spaceButtonPressed = 3;
         }
     }
 }

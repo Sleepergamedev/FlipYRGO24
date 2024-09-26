@@ -65,7 +65,11 @@ public class AngleScript : MonoBehaviour
             direction = new Vector3(endOfLine.transform.position.x, endOfLine.transform.position.y) - new Vector3(startPos.transform.position.x, startPos.transform.position.y);
             shootScript.throwDirection = direction;
             checkActive = false;
+            if (shootScript.spaceButtonPressed == 1)
+            {
             shootScript.spaceButtonPressed = 2;
+
+            }
 
         }
 

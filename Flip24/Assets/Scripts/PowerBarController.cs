@@ -19,6 +19,7 @@ public class PowerBarController : MonoBehaviour
     float elapsedTime; 
     TableShoot shootScript;
     [SerializeField] AnimationCurve powerBarCurve;
+    [SerializeField] AnimationCurve sweetSpotCurve; 
     private float initialFillWidth;
 
     bool hasElapsed; 
@@ -70,15 +71,15 @@ public class PowerBarController : MonoBehaviour
         }
    
 
-        if (setPower >= 45)
+        if (setPower >= 1)
         {
             elapsedTime += Time.deltaTime;  
             
             if (elapsedTime <= 0.3f)
             {
                 sweetSpot.SetActive(true);
-                sweetSpot.transform.localScale += Vector3.one * 2 * Time.deltaTime;
-                sweetSpot.transform.eulerAngles += new Vector3(0, 0, 1) * 100 * Time.deltaTime;
+                sweetSpot.transform.localScale += Vector3.one * 3 * Time.deltaTime;
+                
 
             }
 
