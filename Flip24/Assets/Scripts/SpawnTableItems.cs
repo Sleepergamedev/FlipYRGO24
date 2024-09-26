@@ -14,8 +14,8 @@ public class SpawnTableItems : MonoBehaviour
     {
         spawnPos1 = transform.position + new Vector3(0.8f, 2f);
         spawnPos2 = transform.position + new Vector3(-0.5f, 2f); 
-        itemToSpawn1 = Random.Range(0, 8);   
-        itemToSpawn2 = Random.Range(0, 8);
+        itemToSpawn1 = Random.Range(0, 10);   
+        itemToSpawn2 = Random.Range(0, 10);
         Instantiate(tableItems[itemToSpawn1] , spawnPos1, Quaternion.identity);
         Instantiate(tableItems[itemToSpawn2] , spawnPos2, Quaternion.identity);
     }

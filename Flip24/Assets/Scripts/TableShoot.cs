@@ -38,6 +38,7 @@ public class TableShoot : MonoBehaviour
             rb.AddForce(throwDirection.normalized * throwStrength, ForceMode2D.Impulse);
             rb.AddTorque(-torque, ForceMode2D.Impulse);
             spaceButtonPressed = 3;
+           
         }
     }
 }

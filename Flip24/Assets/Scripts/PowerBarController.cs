@@ -78,6 +78,11 @@ public class PowerBarController : MonoBehaviour
             startCount = true;
 
         }
+
+        if (shootScript.spaceButtonPressed == 2)
+        {
+            powerBar.enabled = false;
+        }
         UpdateFeedback();
 
 
@@ -97,7 +102,7 @@ public class PowerBarController : MonoBehaviour
         float powerPercentage = setPower / (float)powerMultiplier;
         if (powerPercentage < 0.3f) return "Mediocre!";
         if (powerPercentage < 0.5) return "OK...";
-        if (powerPercentage < 0.75) return "Better...";
+        if (powerPercentage < 0.75) return "Not bad";
         if (powerPercentage < 0.8) return "Nice!";
         if (powerPercentage < 0.98) return "WoW!";
         if (powerPercentage < 0.99999999) return "Epic!";
