@@ -4,27 +4,33 @@ using UnityEngine;
 
 public class PlayAudio : MonoBehaviour
 {
-    public AudioClip hitHurt;
     private Rigidbody2D rb;
 
-    private AudioSource audioSrc;
+    private AudioSource[] audioSources;
+    private AudioSource swoosh;
+    private AudioSource collision;
 
     bool fadingIn = false;
     bool fadingOut = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        audioSrc = GetComponent<AudioSource>();
-        audioSrc.loop = true;
+        audioSources = GetComponents<AudioSource>();
+
+        swoosh = audioSources[0];
+        collision = audioSources[1];
+
+        swoosh.loop = true;
     }
 
     void Update()
     {
         int speed = Mathf.Abs(Mathf.RoundToInt(rb.velocity.x + rb.velocity.y));
 
-        if (speed >= 25 && !audioSrc.isPlaying)
+        if (speed >= 25 && !swoosh.isPlaying)
         {
-            audioSrc.Play();
+            swoosh.Play();
+
             if (fadingOut)
             {
                 fadingOut = false;
@@ -36,7 +42,7 @@ public class PlayAudio : MonoBehaviour
             }
 
         }
-        else if (speed < 15 && audioSrc.isPlaying)
+        else if (speed < 15 && swoosh.isPlaying)
         {
             if (fadingIn)
             {
@@ -56,14 +62,14 @@ public class PlayAudio : MonoBehaviour
     {
         fadingIn = true;
 
-        audioSrc.volume = 0.0f;
+        swoosh.volume = 0.0f;
 
         float maxVol = 0.25f;
         float fadeSeconds = 0.75f;
 
         for (float x = 0.0f; x <= fadeSeconds; x += Time.deltaTime)
         {
-            audioSrc.volume = Mathf.Lerp(0, maxVol, x / fadeSeconds);
+            swoosh.volume = Mathf.Lerp(0, maxVol, x / fadeSeconds);
             yield return null;
         }
         fadingIn = false;
@@ -74,12 +80,12 @@ public class PlayAudio : MonoBehaviour
     {
         fadingOut = true;
 
-        float volume = audioSrc.volume;
+        float volume = swoosh.volume;
         float fadeSeconds = 0.5f;
 
         for (float x = 0.0f; x <= fadeSeconds; x += Time.deltaTime)
         {
-            audioSrc.volume = Mathf.Lerp(volume, 0, x / fadeSeconds);
+            swoosh.volume = Mathf.Lerp(volume, 0, x / fadeSeconds);
             yield return null;
         }
         fadingOut = false;
@@ -87,19 +93,13 @@ public class PlayAudio : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (rb.velocity.x >= 5)
+        swoosh.Stop();
+
+        if (rb.velocity.x >= 5 && !collision.isPlaying)
         {
-            audioSrc.Stop();
-            audioSrc.loop = false;
+            collision.pitch = Random.Range(0.5f, 1.5f);
 
-            //Stop these Coroutines to be completely 
-            //sure volume is 1 for the collision sound.
-            StopCoroutine(VolumeFadeOut());
-            StopCoroutine(VolumeFadeIn());
-
-            audioSrc.volume = 1.0f;
-            audioSrc.pitch = Random.Range(0.5f, 1.5f);
-            audioSrc.PlayOneShot(hitHurt, 0.75f);
+            collision.Play();
         }
     }
 }
