@@ -22,15 +22,6 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
-        if (valueManagerScript.isGameOver && !showingScore)
-        {
-            showingScore = true;
-            CalculateJudgeScore();
-        }
-    }
-
-    void CalculateJudgeScore()
-    {
         if (valueManagerScript.isFlipped180 == true)
         {
             styleFactor = 5;
@@ -40,6 +31,16 @@ public class ScoreManager : MonoBehaviour
         {
             styleFactor = 5;
         }
+        if (valueManagerScript.isGameOver && !showingScore)
+        {
+            showingScore = true;
+            CalculateJudgeScore();
+        }
+
+    }
+
+    void CalculateJudgeScore()
+    {
         finalScore = valueManagerScript.metresFlown * styleFactor;
         highScoreManager.LogHighScore(finalScore);
         mainSceneUi.ScoreBoardScore(finalScore);

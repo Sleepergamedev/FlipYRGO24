@@ -28,22 +28,18 @@ public class ScoreTextManager : MonoBehaviour
     {
         if (valueScript.isFlipped180 && madeText == false && scoreScript.styleFactor > 1)
         {
-            Debug.Log("made mult text");
             Instantiate(multText, transform);
-            multText.transform.SetParent(text.transform);
-
-            text.text = valueScript.metresFlown * scoreScript.styleFactor + " points";
+            // multText.transform.SetParent(text.transform);
             madeText = true;
         }
-        if (valueScript.isFlipped90 && madeText == false && scoreScript.styleFactor > 1 || valueScript.isFlipped270 && madeText == false && scoreScript.styleFactor > 1)
+        if ((valueScript.isFlipped90 || valueScript.isFlipped270) && madeText == false && scoreScript.styleFactor > 1)
         {
-            Debug.Log("made mult text");
             Instantiate(multText, transform.position, transform.rotation);
-            text.text = valueScript.metresFlown * scoreScript.styleFactor + " points";
+            //   multText.transform.SetParent(text.transform);
             madeText = true;
         }
+        text.text = valueScript.metresFlown * scoreScript.styleFactor + " points";
 
-        text.text = valueScript.metresFlown.ToString() + " points";
         text.fontSize = fontSize * Mathf.Sin(Time.time) / 8 + 50;
     }
 }
