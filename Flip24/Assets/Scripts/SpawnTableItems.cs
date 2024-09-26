@@ -19,10 +19,5 @@ public class SpawnTableItems : MonoBehaviour
         Instantiate(tableItems[itemToSpawn1] , spawnPos1, Quaternion.identity);
         Instantiate(tableItems[itemToSpawn2] , spawnPos2, Quaternion.identity);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 }
