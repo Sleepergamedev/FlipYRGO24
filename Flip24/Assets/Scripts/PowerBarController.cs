@@ -117,9 +117,9 @@ public class PowerBarController : MonoBehaviour
         sweetSpot.SetActive(true );
         powerFeedback.enabled = true;
         StartCoroutine(ChangeTextColor() );
-        sweetSpot.transform.localScale += Vector3.one*0.5f * Time.deltaTime;
+        sweetSpot.transform.localScale += Vector3.one * Time.deltaTime;
 
-        StartCoroutine(HideFeedbackAfterDelay(1f));
+        StartCoroutine(HideFeedbackAfterDelay(0.5f));
     }
 
     private IEnumerator ChangeTextColor()
