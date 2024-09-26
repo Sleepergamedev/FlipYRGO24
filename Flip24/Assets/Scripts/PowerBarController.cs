@@ -9,14 +9,14 @@ public class PowerBarController : MonoBehaviour
     public Slider powerBar;
     public Image fillImage;
     public float powerBarSpeed = 1;
+    float powerBarFill;
     public float setPower;
     public float powerDivider;
+    float powerBarRaw;
     TableShoot shootScript;
-
+    [SerializeField] AnimationCurve powerBarCurve;
     private float initialFillWidth;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         shootScript = FindFirstObjectByType<TableShoot>();
@@ -26,29 +26,37 @@ public class PowerBarController : MonoBehaviour
         fillImage.fillOrigin = (int)Image.OriginHorizontal.Left;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        powerBar.value += powerBarSpeed * 2 * Time.deltaTime;
-        if (powerBar.value >= powerBar.maxValue || powerBar.value <= powerBar.minValue)
+        powerBarRaw += powerBarSpeed * Time.deltaTime;
+
+        
+        powerBarRaw = Mathf.Clamp(powerBarRaw, 0f, 1f);
+
+        float curvedValue = powerBarCurve.Evaluate(powerBarRaw);
+
+        // Set the power bar value
+        powerBar.value = Mathf.Lerp(powerBar.minValue, powerBar.maxValue, curvedValue);
+
+        // Reverse direction 
+        if (powerBarRaw >= 1f || powerBarRaw <= 0f)
         {
             powerBarSpeed = -powerBarSpeed;
         }
 
-        float fillAmount = (powerBar.value - powerBar.minValue) / (powerBar.maxValue - powerBar.minValue);
-        fillImage.fillAmount = fillAmount;
+        
+        fillImage.fillAmount = (powerBar.value - powerBar.minValue) / (powerBar.maxValue - powerBar.minValue);
 
+        
         if (Input.GetKeyDown(KeyCode.Space) && shootScript.spaceButtonPressed == 0)
         {
-            Debug.Log("space");
             setPower = powerBar.value / powerDivider;
-            Debug.Log(setPower);
             shootScript.throwStrength = setPower;
             powerBarSpeed = 0;
             shootScript.spaceButtonPressed = 1;
             powerBar.gameObject.SetActive(false);
-
         }
-
     }
 }
+
+  
