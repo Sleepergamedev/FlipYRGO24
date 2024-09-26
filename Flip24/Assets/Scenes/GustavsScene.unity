@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &56940206 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3587191331448519798, guid: 0fd35a4f3222315418db8405853ed0f0, type: 3}
+  m_PrefabInstance: {fileID: 7443028930038412509}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &65350485
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +270,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1128774588688741511, guid: 0fd35a4f3222315418db8405853ed0f0, type: 3}
   m_PrefabInstance: {fileID: 7443028930038412509}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &185597915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185597914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e782f19a970d704998ec86416a30d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorJudge1: {fileID: 56940206}
+  animatorJudge2: {fileID: 1651808507}
 --- !u!114 &322779212 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 179527152221543038, guid: 2882ab13654afca499a481ca4820f75f, type: 3}
@@ -617,6 +636,7 @@ MonoBehaviour:
   fillImage: {fileID: 322779212}
   powerBarSpeed: 100
   setPower: 0
+  powerDivider: 0
 --- !u!4 &1413218225
 Transform:
   m_ObjectHideFlags: 0
@@ -648,7 +668,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1472937445
 AudioSource:
   m_ObjectHideFlags: 0
@@ -873,6 +893,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2882ab13654afca499a481ca4820f75f, type: 3}
+--- !u!95 &1651808507 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2399412112162992319, guid: 0fd35a4f3222315418db8405853ed0f0, type: 3}
+  m_PrefabInstance: {fileID: 7443028930038412509}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1902891716 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1321737151705642728, guid: d5043b48d4ac09a41a8fdfe4650fffd2, type: 3}
@@ -1095,11 +1120,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 792328205}
     - target: {fileID: 2524373396179031557, guid: 1b368e9e8aac4ce4bb56f6ad04dfc59e, type: 3}
+      propertyPath: table
+      value: 
+      objectReference: {fileID: 792328203}
+    - target: {fileID: 2524373396179031557, guid: 1b368e9e8aac4ce4bb56f6ad04dfc59e, type: 3}
       propertyPath: torque
       value: 94.4
       objectReference: {fileID: 0}
     - target: {fileID: 2524373396179031557, guid: 1b368e9e8aac4ce4bb56f6ad04dfc59e, type: 3}
       propertyPath: animator
+      value: 
+      objectReference: {fileID: 1308852011}
+    - target: {fileID: 2524373396179031557, guid: 1b368e9e8aac4ce4bb56f6ad04dfc59e, type: 3}
+      propertyPath: explodeAnimator
       value: 
       objectReference: {fileID: 1308852011}
     - target: {fileID: 3171691137280658434, guid: 1b368e9e8aac4ce4bb56f6ad04dfc59e, type: 3}
@@ -1297,9 +1330,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2811851845837831491, guid: 0fd35a4f3222315418db8405853ed0f0, type: 3}
+    - {fileID: 7108522501179617784, guid: 0fd35a4f3222315418db8405853ed0f0, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1128774588688741511, guid: 0fd35a4f3222315418db8405853ed0f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 185597915}
   m_SourcePrefab: {fileID: 100100000, guid: 0fd35a4f3222315418db8405853ed0f0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

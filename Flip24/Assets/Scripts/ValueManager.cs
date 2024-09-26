@@ -32,7 +32,7 @@ public class ValueManager : MonoBehaviour
         {
             startCount = true;
         }
-        
+
         if (transform.localEulerAngles.z >= 179 && transform.localEulerAngles.z <= 181 && isFlipped180 == false && rb.velocity.x <= 0)
         {
             isFlipped180 = true;
