@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     public SpriteRenderer backShade;
     public GameObject judges;
     public Button playAgainButton;
-    public Button menuButton; 
+    public Button menuButton;
 
     private void Awake()
     {

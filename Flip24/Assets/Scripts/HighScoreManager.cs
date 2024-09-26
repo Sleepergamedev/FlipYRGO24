@@ -15,7 +15,7 @@ public class HighScoreManager : MonoBehaviour
     public int maxHighScores = 5;
     ScoreManager scoreManager;
 
-    bool scoreLogged;
+    public bool highScoreActive;   
     int newScore; 
 
     private void Start()
@@ -45,12 +45,12 @@ public class HighScoreManager : MonoBehaviour
                 }
             }
         }
-        Debug.Log(lowestHighScore); 
-        Debug.Log(hasExistingScores);
+        
 
         if (!hasExistingScores || score > lowestHighScore)
         {
             // Show input field for name
+            highScoreActive = true;
             nameInputField.gameObject.SetActive(true);
             newScore = score; 
         }
@@ -60,7 +60,7 @@ public class HighScoreManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             SubmitHighScore(input, newScore);
-            Debug.Log(input + newScore); 
+            highScoreActive=false;
 
         }
     }
@@ -101,7 +101,7 @@ public class HighScoreManager : MonoBehaviour
 
         // Hide input field
         nameInputField.gameObject.SetActive(false);
-        scoreLogged = true; 
+        
     }
 
     public void DisplayHighScores()
