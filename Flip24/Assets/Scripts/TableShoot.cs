@@ -11,13 +11,14 @@ public class TableShoot : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] GameObject table;
     [SerializeField] Animator explodeAnimator;
-    public int spaceButtonPressed = 0;
+    public int spaceButtonPressed;
     CameraScript cameraScript;
 
 
 
     private void Start()
     {
+        spaceButtonPressed = 0;
         cameraScript = FindFirstObjectByType<CameraScript>();
         rb = table.GetComponent<Rigidbody2D>();
 
