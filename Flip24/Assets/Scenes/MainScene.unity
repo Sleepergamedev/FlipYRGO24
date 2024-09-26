@@ -2001,6 +2001,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 407282346}
     m_Modifications:
+    - target: {fileID: 1624497564131437768, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 1624497564131437768, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1624497564131437768, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.056171417
+      objectReference: {fileID: 0}
+    - target: {fileID: 1624497564131437768, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1624497564131437768, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 1624497564131437768, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294905344
+      objectReference: {fileID: 0}
+    - target: {fileID: 1624497564131437768, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 1624497564131437768, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1809611171188719788, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
       propertyPath: m_Name
       value: SweetSpot
@@ -2051,43 +2083,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6527684181430685290, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6527684181430685290, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9964792
+      value: 0.9374448
       objectReference: {fileID: 0}
     - target: {fileID: 6527684181430685290, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.0032016237
       objectReference: {fileID: 0}
     - target: {fileID: 6527684181430685290, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.00862425
       objectReference: {fileID: 0}
     - target: {fileID: 6527684181430685290, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.08384037
+      value: -0.34801233
       objectReference: {fileID: 0}
     - target: {fileID: 6527684181430685290, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 633
+      value: 616
       objectReference: {fileID: 0}
     - target: {fileID: 6527684181430685290, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -253
+      value: -303
       objectReference: {fileID: 0}
     - target: {fileID: 6527684181430685290, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -0.688
       objectReference: {fileID: 0}
     - target: {fileID: 6527684181430685290, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -0.799
       objectReference: {fileID: 0}
     - target: {fileID: 6527684181430685290, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -9.619
+      value: -40.729
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2307,6 +2339,30 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  sweetSpotCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
