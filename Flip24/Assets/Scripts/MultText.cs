@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MultText : MonoBehaviour
@@ -14,10 +15,10 @@ public class MultText : MonoBehaviour
         GetComponent<TMP_Text>().text = scoreScript.styleFactor.ToString() + "X";
         yAxis = gameObject.transform.localPosition.y;
     }
-    void Update()
+    void FixedUpdate()
     {
         transform.localPosition = new Vector3(0, yAxis += 60 * Time.deltaTime, 0);
-        GetComponent<TMP_Text>().faceColor = new Color32(255, 224, 0, alpha--);
+        GetComponent<TMP_Text>().faceColor = new Color32(255, 224, 0, alpha-= 3);
         if (alpha <= 0)
         {
             Destroy(gameObject);
