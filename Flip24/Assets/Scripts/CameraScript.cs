@@ -12,6 +12,7 @@ public class CameraScript : MonoBehaviour
     Vector3 cameraOffset = new Vector3(0, 2.5f, -10);
     Vector3 shakeCameraOffset = new Vector3(0, 2.5f, -10);
     public bool launchReady;
+    public GameObject tutorial;
 
     [Header("Camera Zoom Specs")]
     public float zoomFactor = 1.5f;
@@ -19,7 +20,7 @@ public class CameraScript : MonoBehaviour
     public float shakeIntensity = 0.1f;
     bool isShaking = false;
 
-    
+
 
     //private 
     TableShoot shootScript;
@@ -39,7 +40,9 @@ public class CameraScript : MonoBehaviour
     {
         if (!isShaking && shootScript.spaceButtonPressed == 2)
         {
+
             TriggerZoomAndShake();
+            tutorial.SetActive(false);
         }
     }
 
@@ -51,7 +54,7 @@ public class CameraScript : MonoBehaviour
         if (!isShaking)
         {
             Vector2 smoothFollow = Vector2.Lerp(mainCamera.transform.position, transform.position, smoothSpeed);
-            if (transform.position.y < 0.5f) 
+            if (transform.position.y < 0.5f)
             {
                 smoothFollow = Vector2.Lerp(mainCamera.transform.position, transform.position + cameraOffset, smoothSpeed);
             }

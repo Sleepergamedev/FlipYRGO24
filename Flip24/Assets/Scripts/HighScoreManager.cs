@@ -11,25 +11,25 @@ using UnityEngine.UI;
 public class HighScoreManager : MonoBehaviour
 {
     public TMP_InputField nameInputField;
-    public TMP_Text highScoreText; 
+    public TMP_Text highScoreText;
     public int maxHighScores = 5;
     ScoreManager scoreManager;
 
-    public bool highScoreActive;   
-    int newScore; 
+    public bool highScoreActive;
+    int newScore;
 
     private void Start()
     {
         scoreManager = FindFirstObjectByType<ScoreManager>();
         nameInputField.onEndEdit.AddListener(OnNameInput);
-        
+
     }
 
-   
+
 
     public void LogHighScore(int score)
     {
-        Debug.Log(score); 
+        Debug.Log(score);
         int lowestHighScore = int.MaxValue;
         bool hasExistingScores = false;
 
@@ -45,14 +45,14 @@ public class HighScoreManager : MonoBehaviour
                 }
             }
         }
-        
+
 
         if (!hasExistingScores || score > lowestHighScore)
         {
             // Show input field for name
             highScoreActive = true;
             nameInputField.gameObject.SetActive(true);
-            newScore = score; 
+            newScore = score;
         }
     }
     private void OnNameInput(string input)
@@ -60,7 +60,7 @@ public class HighScoreManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             SubmitHighScore(input, newScore);
-            highScoreActive=false;
+            highScoreActive = false;
 
         }
     }
@@ -68,7 +68,7 @@ public class HighScoreManager : MonoBehaviour
     public void SubmitHighScore(string newHighScoreName, int newHighScore)
     {
         string playerName = newHighScoreName;
-        int newScore = newHighScore; 
+        int newScore = newHighScore;
 
         //Create a list which will store the high scores.
         List<(string name, int score)> highScores = new List<(string name, int score)>();
@@ -101,7 +101,7 @@ public class HighScoreManager : MonoBehaviour
 
         // Hide input field
         nameInputField.gameObject.SetActive(false);
-        
+
     }
 
     public void DisplayHighScores()
@@ -120,9 +120,9 @@ public class HighScoreManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) 
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            DisplayHighScores();    
+            DisplayHighScores();
         }
     }
 }

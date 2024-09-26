@@ -67,7 +67,7 @@ public class AngleScript : MonoBehaviour
             checkActive = false;
             if (shootScript.spaceButtonPressed == 1)
             {
-            shootScript.spaceButtonPressed = 2;
+                shootScript.spaceButtonPressed = 2;
 
             }
 
