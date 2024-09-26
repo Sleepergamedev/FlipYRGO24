@@ -317,6 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finalScore: 0
+  styleFactor: 0
 --- !u!1001 &155707823
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -719,7 +720,7 @@ MonoBehaviour:
   m_text: 'Distance: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 166151b2c881e964d8c6988c230cbf1b, type: 2}
-  m_sharedMaterial: {fileID: -5480394641987460324, guid: 166151b2c881e964d8c6988c230cbf1b, type: 2}
+  m_sharedMaterial: {fileID: 5149565219102961318, guid: 166151b2c881e964d8c6988c230cbf1b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1579,8 +1580,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Speed: '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 166151b2c881e964d8c6988c230cbf1b, type: 2}
-  m_sharedMaterial: {fileID: -5480394641987460324, guid: 166151b2c881e964d8c6988c230cbf1b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1844,9 +1845,16 @@ MonoBehaviour:
   fillRect: {fileID: 411083502}
   powerBar: {fileID: 7889422}
   fillImage: {fileID: 411083503}
+  sweetSpot: {fileID: 0}
   powerBarSpeed: 100
   setPower: 0
-  powerDivider: 3
+  powerMultiplier: 50
+  powerBarCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1559636208
 PrefabInstance:
   m_ObjectHideFlags: 0
