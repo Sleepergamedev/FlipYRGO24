@@ -180,6 +180,7 @@ MonoBehaviour:
   smoothSpeed: 0.125
   mainCamera: {fileID: 0}
   launchReady: 0
+  tutorial: {fileID: 0}
   zoomFactor: 1.5
   shakeDuration: 2
   shakeIntensity: 0.1
@@ -213,11 +214,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 51c7bfe25b2b6ba46b11113a35f432ce, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 12f2e2c61bae78e4d92095876fd82e8b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -311,6 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad8da6a1c7f9d144c81088d00fe79abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitHurt: {fileID: 8300000, guid: 51c7bfe25b2b6ba46b11113a35f432ce, type: 3}
 --- !u!1 &5010123126154854825
 GameObject:
   m_ObjectHideFlags: 0
