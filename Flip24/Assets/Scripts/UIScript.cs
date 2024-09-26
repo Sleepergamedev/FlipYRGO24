@@ -5,9 +5,9 @@ using System;
 
 public class UIScript : MonoBehaviour
 {
-    [Header ("Buttons")]
+    [Header("Buttons")]
     public Button playButton;
-    
+
     public Button exitButton;
 
     public Button creditsButton;
@@ -15,7 +15,7 @@ public class UIScript : MonoBehaviour
     public GameObject creditsPanel;
 
     //private
-    bool toggleCredits; 
+    bool toggleCredits;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +25,13 @@ public class UIScript : MonoBehaviour
         exitButton.onClick.AddListener(ExitGame);
 
         creditsButton.onClick.AddListener(ToggleCredits);
+        creditsPanel.SetActive(false);
     }
 
     private void ToggleCredits()
     {
         toggleCredits = !toggleCredits;
-        ToggleCredits(toggleCredits); 
+        ToggleCredits(toggleCredits);
     }
 
     private void ToggleCredits(bool toggleCredits)
@@ -44,12 +45,12 @@ public class UIScript : MonoBehaviour
 
     void LoadScene()
     {
-        SceneManager.LoadScene(1, LoadSceneMode.Single); 
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
     private void ExitGame()
     {
         Application.Quit();
     }
 
-    
+
 }
