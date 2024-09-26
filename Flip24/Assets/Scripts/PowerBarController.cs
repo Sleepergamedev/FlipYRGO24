@@ -81,7 +81,7 @@ public class PowerBarController : MonoBehaviour
 
         if (shootScript.spaceButtonPressed == 2)
         {
-            powerBar.enabled = false;
+            powerBar.gameObject.SetActive(false);
         }
         UpdateFeedback();
 
