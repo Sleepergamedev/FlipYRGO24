@@ -139,7 +139,7 @@ public class HighScoreManager : MonoBehaviour
 
         private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.Escape) && Input.GetKey(KeyCode.K))
         {
             ResetHighScores();
         }
