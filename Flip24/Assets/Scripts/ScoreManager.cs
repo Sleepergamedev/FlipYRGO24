@@ -29,7 +29,7 @@ public class ScoreManager : MonoBehaviour
         }
         if (valueManagerScript.isFlipped270 == true || valueManagerScript.isFlipped90 == true)
         {
-            styleFactor = 5;
+            styleFactor = 20;
         }
         if (valueManagerScript.isGameOver && !showingScore)
         {

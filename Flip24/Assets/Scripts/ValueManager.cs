@@ -83,7 +83,7 @@ public class ValueManager : MonoBehaviour
             isFlipped270 = true;
             startCount = true;
         }
-        if (transform.localEulerAngles.z >= 0 && transform.localEulerAngles.z <= 5 && !notFlipped)
+        if (transform.localEulerAngles.z >= 272 && transform.localEulerAngles.z <= 70 && !notFlipped)
         {
             notFlipped = true;
             startCount = true;
