@@ -315,11 +315,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b368e9e8aac4ce4bb56f6ad04dfc59e, type: 3}
---- !u!224 &99019961 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1268250571626836811, guid: 2882ab13654afca499a481ca4820f75f, type: 3}
-  m_PrefabInstance: {fileID: 3308304763291761092}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &271465081 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1809611171188719788, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
@@ -330,6 +325,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6527684181430685290, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
   m_PrefabInstance: {fileID: 2870959459243643766}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &271465083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1624497564131437768, guid: 8028b97d50d399749a7652b4c24e3e89, type: 3}
+  m_PrefabInstance: {fileID: 2870959459243643766}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271465081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &318138530
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,10 +520,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19144956a0f40ad4aacc91d561296d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillRect: {fileID: 99019961}
+  fillRect: {fileID: 1556187315}
   powerBar: {fileID: 1558922390}
   fillImage: {fileID: 1556187314}
   sweetSpot: {fileID: 271465081}
+  powerFeedback: {fileID: 271465083}
   powerBarSpeed: 2
   setPower: 0
   powerMultiplier: 50
@@ -551,6 +558,12 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  sweetSpotCurve:
+    serializedVersion: 2
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -925,6 +938,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &1556187315 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2093281141170239066, guid: 2882ab13654afca499a481ca4820f75f, type: 3}
+  m_PrefabInstance: {fileID: 3308304763291761092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1558922389 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8229766758048969752, guid: 2882ab13654afca499a481ca4820f75f, type: 3}
@@ -1115,6 +1133,7 @@ MonoBehaviour:
   smoothSpeed: 0.125
   mainCamera: {fileID: 318138532}
   launchReady: 0
+  tutorial: {fileID: 0}
   zoomFactor: 1.5
   shakeDuration: 2
   shakeIntensity: 0.1
