@@ -18,7 +18,6 @@ public class ValueManager : MonoBehaviour
     private float timer;
     private bool startCount;
     private TableShoot tableShoot;
-    private bool hasLanded = false;
 
 
         private void Start()
