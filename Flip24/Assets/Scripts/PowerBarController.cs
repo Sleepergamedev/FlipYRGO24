@@ -2,20 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
+using System.Runtime.CompilerServices;
 
 public class PowerBarController : MonoBehaviour
 {
     public RectTransform fillRect;
     public Slider powerBar;
     public Image fillImage;
+    public GameObject sweetSpot; 
     public float powerBarSpeed = 1;
     float powerBarFill;
     public float setPower;
-    public float powerDivider;
+    public float powerMultiplier = 50;
     float powerBarRaw;
+    float elapsedTime; 
     TableShoot shootScript;
     [SerializeField] AnimationCurve powerBarCurve;
     private float initialFillWidth;
+
+    bool hasElapsed; 
 
     void Start()
     {
@@ -24,6 +30,7 @@ public class PowerBarController : MonoBehaviour
         fillImage.type = Image.Type.Filled;
         fillImage.fillMethod = Image.FillMethod.Horizontal;
         fillImage.fillOrigin = (int)Image.OriginHorizontal.Left;
+        sweetSpot.SetActive(false);
     }
 
     void Update()
@@ -50,13 +57,47 @@ public class PowerBarController : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space) && shootScript.spaceButtonPressed == 0)
         {
-            setPower = powerBar.value / powerDivider;
+            setPower = powerBar.value * powerMultiplier;
             shootScript.throwStrength = setPower;
             powerBarSpeed = 0;
             shootScript.spaceButtonPressed = 1;
+            
+            
+        }
+        if (shootScript.spaceButtonPressed == 2) 
+        {
             powerBar.gameObject.SetActive(false);
         }
+        //if (hasElapsed)
+        //{
+        //    elapsedTime = 0;
+        //    hasElapsed = false;
+        //}
+
+        if (setPower >= 1)
+        {
+            elapsedTime += Time.deltaTime;  
+            
+            if (elapsedTime <= 0.2f)
+            {
+                sweetSpot.SetActive(true);
+                sweetSpot.transform.localScale += Vector3.one * 2 * Time.deltaTime;
+                sweetSpot.transform.eulerAngles += new Vector3(0, 0, 1) * 100 * Time.deltaTime;
+
+            }
+
+             
+            else if (elapsedTime >= 0.21f)
+            {
+                
+                sweetSpot.SetActive(false);
+                
+            }
+
+        }
+
+        }
     }
-}
+
 
   
