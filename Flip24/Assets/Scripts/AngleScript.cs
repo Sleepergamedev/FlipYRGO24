@@ -12,6 +12,7 @@ public class AngleScript : MonoBehaviour
     [SerializeField] GameObject startPos;
     [SerializeField] GameObject endOfLine;
     public SpriteRenderer powerLineSprite;
+    public float inputCooldown;
     Vector3 currentEulerAngles;
     public Vector3 direction;
     TableShoot shootScript;
@@ -59,7 +60,7 @@ public class AngleScript : MonoBehaviour
         }
 
         //if sats för att hämta vinkeln med hjälp av vektorer och empty game objekts i scenen
-        if (Input.GetKeyDown(KeyCode.Space) && shootScript.spaceButtonPressed == 1)
+        if (Input.GetKeyDown(KeyCode.Space) && shootScript.spaceButtonPressed == 1 && inputCooldown >= 1f)
         {
             Debug.Log("Space");
             direction = new Vector3(endOfLine.transform.position.x, endOfLine.transform.position.y) - new Vector3(startPos.transform.position.x, startPos.transform.position.y);

@@ -22,6 +22,7 @@ public class PowerBarController : MonoBehaviour
     [SerializeField] AnimationCurve powerBarCurve;
     [SerializeField] AnimationCurve sweetSpotCurve;
     private float initialFillWidth;
+    private AngleScript angleScript;
 
     bool hasElapsed;
     bool isIndicating;
@@ -34,6 +35,7 @@ public class PowerBarController : MonoBehaviour
         fillImage.fillMethod = Image.FillMethod.Horizontal;
         fillImage.fillOrigin = (int)Image.OriginHorizontal.Left;
         sweetSpot.SetActive(false);
+        angleScript = FindFirstObjectByType<AngleScript>();
     }
 
     void Update()
@@ -64,6 +66,7 @@ public class PowerBarController : MonoBehaviour
             shootScript.throwStrength = setPower;
             powerBarSpeed = 0;
             shootScript.spaceButtonPressed = 1;
+            angleScript.inputCooldown += 1 * Time.deltaTime;
             isIndicating = true;
 
         }
