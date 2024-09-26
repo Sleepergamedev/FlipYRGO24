@@ -6,14 +6,14 @@ using UnityEngine;
 public class GameStateManager : MonoBehaviour
 {
 
-    private ValueManager valueScript;
+    private ValueManager valueManager;
     [SerializeField] GameObject tablePos;
     private Rigidbody2D rb;
     [SerializeField] TMP_Text speedText;
     void Start()
     {
         rb = tablePos.GetComponent<Rigidbody2D>();
-        valueScript = FindFirstObjectByType<ValueManager>();
+        valueManager = FindFirstObjectByType<ValueManager>();
         UIManager.Instance.backShade.gameObject.SetActive(false);
         UIManager.Instance.judges.gameObject.SetActive(false);
     }
@@ -22,7 +22,7 @@ public class GameStateManager : MonoBehaviour
     void Update()
     {
         speedText.text = "Speed: " + Mathf.Abs(Mathf.RoundToInt(rb.velocity.x + rb.velocity.y)).ToString() + "m/s";
-        if (valueScript.isGameOver == true)
+        if (valueManager.isGameOver == true)
         {
             Debug.Log("game over");
             UIManager.Instance.backShade.gameObject.SetActive(true);

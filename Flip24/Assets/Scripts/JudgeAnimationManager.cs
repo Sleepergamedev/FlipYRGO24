@@ -17,12 +17,12 @@ public class JudgeAnimationManager : MonoBehaviour
         if (valueScript.notFlipped && isActiveAndEnabled)
         {
             animatorJudge1.Play("Judge1X");
-            animatorJudge2.Play("judge2 x");
+            animatorJudge2.Play("Judge2XXX");
         }
         else if (isActiveAndEnabled)
         {
-            animatorJudge1.Play("Judge1o");
-            animatorJudge2.Play("judge2 o");
+            animatorJudge1.Play("Judge1O");
+            animatorJudge2.Play("Judge2OOO");
         }
     }
 }

@@ -14,6 +14,7 @@ public class TableShoot : MonoBehaviour
     public int spaceButtonPressed;
     CameraScript cameraScript;
     private AudioSource audioSource;
+    public bool hasShot;
 
 
 
@@ -30,6 +31,7 @@ public class TableShoot : MonoBehaviour
         //if sats för att skjuta iväg spelaren beroende på spelarens input
         if (spaceButtonPressed == 2 && cameraScript.launchReady)
         {
+            hasShot = true;
             audioSource.pitch = Random.Range(0.5f, 1.5f);
             audioSource.Play();
             explodeAnimator.Play("New State");

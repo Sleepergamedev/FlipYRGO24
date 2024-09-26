@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: judge2 x
+  m_Name: Judge2XXX
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -62,10 +62,10 @@ AnimatorStateMachine:
     m_Position: {x: 220, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7951578160508739312}
-    m_Position: {x: 220, y: 80, z: 0}
+    m_Position: {x: 320, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5372916794900962230}
-    m_Position: {x: 220, y: 160, z: 0}
+    m_Position: {x: 380, y: 180, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -83,7 +83,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: judge2 o
+  m_Name: Judge2OOO
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

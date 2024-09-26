@@ -14,6 +14,7 @@ public class ScoreTextManager : MonoBehaviour
     [SerializeField] GameObject multText;
     private bool madeText = false;
     private AudioSource sound;
+    private ValueManager valueManager;
     void Start()
     {
         fontSize = GetComponent<TMP_Text>().fontSize;
@@ -22,12 +23,15 @@ public class ScoreTextManager : MonoBehaviour
         scoreScript = FindFirstObjectByType<ScoreManager>();
         valueScript = FindFirstObjectByType<ValueManager>();
         sound = GetComponent<AudioSource>();
-
-
+        valueManager = FindFirstObjectByType<ValueManager>();
     }
 
     void Update()
     {
+        if (valueManager.isGameOver)
+        {
+            gameObject.SetActive(false);
+        }
         if (valueScript.isFlipped180 && madeText == false && scoreScript.styleFactor > 1)
         {
             Instantiate(multText, transform);
