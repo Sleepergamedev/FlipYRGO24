@@ -12,9 +12,9 @@ public class UIManagerMainScene : MonoBehaviour
     public Button playAgainButton;
     public Button menuButton;
     public GameObject highScoreBoard;
-    public GameObject scoreBoard; 
+    public GameObject scoreBoard;
     public TMP_Text uiScore;
-    public TMP_Text scoreBoardScore; 
+    public TMP_Text scoreBoardScore;
     ValueManager valueManager;
     HighScoreManager highScoreManager;
     // Start is called before the first frame update
@@ -24,8 +24,8 @@ public class UIManagerMainScene : MonoBehaviour
         highScoreManager = FindFirstObjectByType<HighScoreManager>();
         playAgainButton.onClick.AddListener(ReloadScene);
         menuButton.onClick.AddListener(LoadMenuScene);
-        
-        
+
+
     }
 
     private void Update()
@@ -35,7 +35,7 @@ public class UIManagerMainScene : MonoBehaviour
         {
             ShowHighScoreBoard();
         }
-        
+
         if (highScoreManager.highScoreActive == false && valueManager.isGameOver)
         {
             ShowScoreBoard();
@@ -58,12 +58,12 @@ public class UIManagerMainScene : MonoBehaviour
 
     public void ScoreBoardScore(int score)
     {
-        scoreBoardScore.text = ""+score.ToString();
+        scoreBoardScore.text = "" + score.ToString();
     }
 
     private void LoadMenuScene()
     {
-        SceneManager.LoadScene(0, LoadSceneMode.Single); 
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
     private void ReloadScene()
@@ -76,5 +76,5 @@ public class UIManagerMainScene : MonoBehaviour
         uiScore.text = "Distance: " + score.ToString();
     }
 
- 
+
 }

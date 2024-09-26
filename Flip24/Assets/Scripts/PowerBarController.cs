@@ -11,16 +11,16 @@ public class PowerBarController : MonoBehaviour
     public Slider powerBar;
     public Image fillImage;
     public GameObject sweetSpot;
-    public TMP_Text powerFeedback; 
+    public TMP_Text powerFeedback;
     public float powerBarSpeed = 1;
     float powerBarFill;
     public float setPower;
     public float powerMultiplier = 50;
     float powerBarRaw;
-    float elapsedTime; 
+    float elapsedTime;
     TableShoot shootScript;
     [SerializeField] AnimationCurve powerBarCurve;
-    [SerializeField] AnimationCurve sweetSpotCurve; 
+    [SerializeField] AnimationCurve sweetSpotCurve;
     private float initialFillWidth;
 
     bool hasElapsed;
@@ -40,7 +40,7 @@ public class PowerBarController : MonoBehaviour
     {
         powerBarRaw += powerBarSpeed * Time.deltaTime;
 
-        
+
         powerBarRaw = Mathf.Clamp(powerBarRaw, 0f, 1f);
 
         float curvedValue = powerBarCurve.Evaluate(powerBarRaw);
@@ -54,10 +54,10 @@ public class PowerBarController : MonoBehaviour
             powerBarSpeed = -powerBarSpeed;
         }
 
-        
+
         fillImage.fillAmount = (powerBar.value - powerBar.minValue) / (powerBar.maxValue - powerBar.minValue);
 
-        
+
         if (Input.GetKeyDown(KeyCode.Space) && shootScript.spaceButtonPressed == 0)
         {
             setPower = powerBar.value * powerMultiplier;
@@ -65,9 +65,9 @@ public class PowerBarController : MonoBehaviour
             powerBarSpeed = 0;
             shootScript.spaceButtonPressed = 1;
             isIndicating = true;
-            
+
         }
-        if (shootScript.spaceButtonPressed == 2) 
+        if (shootScript.spaceButtonPressed == 2)
         {
             powerBar.gameObject.SetActive(false);
         }
@@ -123,29 +123,29 @@ public class PowerBarController : MonoBehaviour
 
         if (setPower >= powerMultiplier * 0.98 && isIndicating)
         {
-            elapsedTime += Time.deltaTime;  
-            
+            elapsedTime += Time.deltaTime;
+
             if (elapsedTime <= 0.3f)
             {
                 sweetSpot.SetActive(true);
                 sweetSpot.transform.localScale += Vector3.one * 3 * Time.deltaTime;
-                powerFeedback.text = "Nice!"; 
-                
+                powerFeedback.text = "Nice!";
+
 
             }
 
-             
+
             else if (elapsedTime >= 0.31f)
             {
-                
+
                 sweetSpot.SetActive(false);
-                
+
             }
 
         }
 
-        }
     }
+}
 
 
-  
+
