@@ -20,7 +20,7 @@ public class ValueManager : MonoBehaviour
     private TableShoot tableShoot;
 
 
-        private void Start()
+    private void Start()
     {
         tableShoot = FindFirstObjectByType<TableShoot>();
     }
@@ -41,13 +41,13 @@ public class ValueManager : MonoBehaviour
             {
                 startCount = true;
             }
-           
+
         }
         if (startCount)
         {
             timer += 1 * Time.deltaTime;
         }
-        
+
         if (tableShoot.hasShot && rb.velocity.x == 0 && timer >= timeToEnd)
         {
             isGameOver = true;
